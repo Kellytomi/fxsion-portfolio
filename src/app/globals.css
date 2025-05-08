@@ -19,6 +19,12 @@
     @apply bg-surface text-text;
   }
 
+  /* Custom cursor rules - keep default cursor visible */
+  a, button, input[type="button"], input[type="submit"],
+  .cursor-pointer, [role="button"] {
+    cursor: auto;
+  }
+
   ::selection {
     @apply bg-accent text-primary;
   }

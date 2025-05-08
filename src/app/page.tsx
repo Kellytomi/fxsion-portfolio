@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRef } from 'react';
+import CountUp from '@/components/CountUp';
 
 export default function Home(): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -114,10 +115,10 @@ export default function Home(): JSX.Element {
                 className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto lg:mx-0"
               >
                 {[
-                  { number: '150+', label: 'Projects' },
-                  { number: '50+', label: 'Clients' },
-                  { number: '99%', label: 'Success' },
-                  { number: '24/7', label: 'Support' },
+                  { number: 150, suffix: '+', label: 'Projects' },
+                  { number: 50, suffix: '+', label: 'Clients' },
+                  { number: 99, suffix: '%', label: 'Success' },
+                  { number: 24, suffix: '/7', label: 'Support' },
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
@@ -127,7 +128,11 @@ export default function Home(): JSX.Element {
                     className="text-center"
                   >
                     <div className="font-display text-2xl sm:text-3xl font-bold gradient-text mb-1">
-                      {stat.number}
+                      <CountUp 
+                        end={stat.number} 
+                        suffix={stat.suffix}
+                        duration={2.5}
+                      />
                     </div>
                     <div className="text-sm text-muted">{stat.label}</div>
                   </motion.div>

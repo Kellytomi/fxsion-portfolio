@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
+import CountUp from '@/components/CountUp';
 
 interface Testimonial {
   name: string;
@@ -362,10 +363,10 @@ export default function Testimonials(): JSX.Element {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: '50+', label: 'Projects Completed', icon: '📊' },
-              { number: '95%', label: 'Client Satisfaction', icon: '⭐' },
-              { number: '40%', label: 'Average Efficiency Gain', icon: '⚡' },
-              { number: '100%', label: 'On-time Delivery', icon: '🚀' },
+              { number: 50, suffix: '+', label: 'Projects Completed', icon: '📊' },
+              { number: 95, suffix: '%', label: 'Client Satisfaction', icon: '⭐' },
+              { number: 40, suffix: '%', label: 'Average Efficiency Gain', icon: '⚡' },
+              { number: 100, suffix: '%', label: 'On-time Delivery', icon: '🚀' },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -376,7 +377,13 @@ export default function Testimonials(): JSX.Element {
                 className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center"
               >
                 <div className="text-2xl mb-3">{stat.icon}</div>
-                <div className="text-3xl md:text-4xl font-bold mb-2">{stat.number}</div>
+                <div className="text-3xl md:text-4xl font-bold mb-2">
+                  <CountUp 
+                    end={stat.number} 
+                    suffix={stat.suffix} 
+                    duration={2}
+                  />
+                </div>
                 <div className="text-sm text-white/80">{stat.label}</div>
               </motion.div>
             ))}

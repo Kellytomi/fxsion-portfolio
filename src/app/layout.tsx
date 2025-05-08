@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
   return (
     <html lang="en" className={`${jakarta.variable} ${syne.variable}`}>
       <body className="bg-surface text-text">
+        <CustomCursor />
         {children}
       </body>
     </html>
