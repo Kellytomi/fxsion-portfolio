@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRef } from 'react';
 import CountUp from '@/components/CountUp';
+import PageSpacer from '@/components/PageSpacer';
 
 export default function Home(): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -19,9 +20,10 @@ export default function Home(): JSX.Element {
   return (
     <main className="min-h-screen bg-surface overflow-hidden" ref={containerRef}>
       <Navigation />
+      <PageSpacer />
       
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center">
+      <section className="relative min-h-[90vh] flex items-center pt-24 sm:pt-28 md:pt-20 lg:pt-0">
         <motion.div 
           className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"
           style={{ y }}
@@ -50,7 +52,7 @@ export default function Home(): JSX.Element {
                 <span className="font-medium">Available for Projects</span>
               </motion.div>
               
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-center lg:text-left">
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -73,7 +75,7 @@ export default function Home(): JSX.Element {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                className="text-lg sm:text-xl text-muted mb-8 max-w-xl mx-auto lg:mx-0"
+                className="text-lg sm:text-xl text-muted mb-8 max-w-xl mx-auto lg:mx-0 text-center lg:text-left"
               >
                 Empowering businesses through intelligent automation, seamless integrations, 
                 and cutting-edge digital solutions.
@@ -83,11 +85,11 @@ export default function Home(): JSX.Element {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
               >
                 <Link 
                   href="/projects" 
-                  className="group btn btn-primary w-full sm:w-auto"
+                  className="group btn btn-primary w-[80%] max-w-[280px] sm:w-auto text-center justify-center"
                 >
                   <span>Explore Projects</span>
                   <svg 
@@ -101,7 +103,7 @@ export default function Home(): JSX.Element {
                 </Link>
                 <Link 
                   href="/contact"
-                  className="group btn btn-secondary w-full sm:w-auto hover:bg-primary/5"
+                  className="group btn btn-secondary w-[80%] max-w-[280px] sm:w-auto text-center justify-center hover:bg-primary/5"
                 >
                   Let's Connect
                 </Link>
