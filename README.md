@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fxsion Portfolio Website
+
+A modern, professional portfolio website for Etoma-Etoto Kelvin Odi, founder of Fxsion - a digital solutions agency specializing in workflow automation, document solutions, and digital development.
+
+## Features
+
+- Responsive design optimized for all devices
+- Modern UI with smooth animations
+- 6 key pages: Home, About, Skills, Projects, Testimonials, and Contact
+- Contact form with email integration
+- Project showcase with visual elements
+- Skills visualization with progress bars
+- Client testimonials and success stories
+
+## Tech Stack
+
+- Next.js 14
+- React 18
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- EmailJS
 
 ## Getting Started
 
-First, run the development server:
-
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/fxsion-portfolio.git
+cd fxsion-portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Create a `.env.local` file in the root directory and add your EmailJS credentials:
+```
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the development server:
+```bash
+npm run dev
+```
 
-## Learn More
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/                    # Next.js app directory
+│   ├── about/             # About page
+│   ├── contact/           # Contact page
+│   ├── projects/          # Projects page
+│   ├── skills/            # Skills page
+│   ├── testimonials/      # Testimonials page
+│   ├── globals.css        # Global styles
+│   └── layout.tsx         # Root layout
+├── components/            # Reusable components
+│   └── Navigation.tsx     # Navigation component
+└── public/               # Static assets
+    ├── projects/         # Project images
+    └── testimonials/     # Testimonial images
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Customization
 
-## Deploy on Vercel
+1. Update the content in each page component to match your information
+2. Replace images in the `public` directory with your own
+3. Modify the color scheme in `tailwind.config.js`
+4. Update contact information and social media links
+5. Add your own projects and testimonials
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The site can be deployed to any platform that supports Next.js applications, such as Vercel, Netlify, or AWS Amplify.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+Etoma-Etoto Kelvin Odi - [contact@fxsion.com](mailto:contact@fxsion.com)
+
+Project Link: [https://github.com/yourusername/fxsion-portfolio](https://github.com/yourusername/fxsion-portfolio)
