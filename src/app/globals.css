@@ -1,4 +1,7 @@
 @theme {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-offwhite: #f8f8f8;
   --color-midnight: #1a1b4b;
   --color-gold: #d4af37;
   --color-soft-white: #f8f9fa;
@@ -47,11 +50,11 @@
   }
   
   .btn-primary {
-    @apply bg-primary text-surface hover:bg-opacity-90;
+    @apply bg-primary text-white hover:bg-opacity-90;
   }
   
   .btn-secondary {
-    @apply bg-secondary text-primary hover:bg-opacity-90;
+    @apply bg-secondary text-white hover:bg-opacity-90;
   }
   
   .section-title {
@@ -67,11 +70,11 @@
   }
 
   .glass-effect {
-    @apply backdrop-blur-md bg-white/70;
+    @apply backdrop-blur-md bg-white/90 border-b border-black/5;
   }
 
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-black to-secondary;
   }
 
   .display-text {

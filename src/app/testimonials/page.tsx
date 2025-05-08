@@ -166,11 +166,8 @@ export default function Testimonials(): JSX.Element {
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary mb-6">
-              <span className="text-sm font-medium">Client Success Stories</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text">
-              Testimonials
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-8 tracking-tight">
+              Client<br />Testimonials
             </h1>
             <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
               Real results from real clients. Discover how our solutions have transformed businesses across industries.
@@ -178,8 +175,8 @@ export default function Testimonials(): JSX.Element {
           </motion.div>
 
           {/* Featured Testimonial Carousel */}
-          <div className="max-w-5xl mx-auto mb-4 relative">
-            <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden h-[400px] md:h-[350px]">
+          <div className="max-w-5xl mx-auto mb-12 relative">
+            <div className="relative bg-white rounded-3xl shadow-lg overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary z-10" />
               
               <AnimatePresence mode="wait">
@@ -191,46 +188,52 @@ export default function Testimonials(): JSX.Element {
                   transition={{ duration: 0.5 }}
                   className="grid md:grid-cols-2 h-full"
                 >
-                  <div className="relative h-40 md:h-full">
+                  <div className="relative h-60 md:h-full">
                     <Image
                       src={testimonials[currentTestimonialIndex].image}
                       alt={testimonials[currentTestimonialIndex].name}
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
-                    <div className="absolute bottom-0 left-0 p-6 text-white">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+                    <div className="absolute bottom-0 left-0 p-8 text-white">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white">
+                        <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-lg">
                           <Image
                             src={testimonials[currentTestimonialIndex].image}
                             alt={testimonials[currentTestimonialIndex].name}
-                            width={48}
-                            height={48}
+                            width={56}
+                            height={56}
                             className="object-cover"
                           />
                         </div>
                         <div>
-                          <h3 className="font-bold">{testimonials[currentTestimonialIndex].name}</h3>
-                          <p className="text-sm text-white/80">{testimonials[currentTestimonialIndex].role}, {testimonials[currentTestimonialIndex].company}</p>
+                          <h3 className="font-bold text-xl">{testimonials[currentTestimonialIndex].name}</h3>
+                          <p className="text-sm text-white/90">{testimonials[currentTestimonialIndex].role}, {testimonials[currentTestimonialIndex].company}</p>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="p-8 md:p-10">
-                    <div className="text-4xl text-primary mb-6">"</div>
-                    <blockquote className="text-lg md:text-xl text-gray-700 italic mb-6 leading-relaxed">
+                  <div className="p-8 md:p-12 flex flex-col justify-center">
+                    <div className="text-6xl text-black/10 mb-6 font-serif">"</div>
+                    <blockquote className="text-lg md:text-xl text-gray-800 mb-8 leading-relaxed">
                       {testimonials[currentTestimonialIndex].quote}
                     </blockquote>
                     
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between mt-auto">
                       <div>
                         <div className="font-bold text-primary">{testimonials[currentTestimonialIndex].project}</div>
                         <div className="text-sm text-gray-500">{testimonials[currentTestimonialIndex].industry}</div>
                       </div>
-                      <Link href="/projects" className="text-primary font-medium hover:underline">
+                      <Link 
+                        href="/projects" 
+                        className="group inline-flex items-center text-sm font-medium border-b border-primary text-primary hover:border-secondary transition-colors duration-300"
+                      >
                         View Project
+                        <svg className="w-4 h-4 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
                       </Link>
                     </div>
                   </div>
@@ -238,14 +241,14 @@ export default function Testimonials(): JSX.Element {
               </AnimatePresence>
             </div>
             
-            {/* Carousel Navigation Dots - Now outside the carousel */}
-            <div className="flex justify-center gap-2 mt-4 mb-12">
+            {/* Carousel Navigation Dots */}
+            <div className="flex justify-center gap-2 mt-6 mb-16">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToTestimonial(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    currentTestimonialIndex === index ? 'bg-primary w-4' : 'bg-gray-300'
+                    currentTestimonialIndex === index ? 'bg-black w-6' : 'bg-gray-300'
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
@@ -254,15 +257,15 @@ export default function Testimonials(): JSX.Element {
           </div>
           
           {/* Industry Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
             {industries.map((industry, index) => (
               <motion.button
                 key={industry}
                 onClick={() => setActiveFilter(industry)}
-                className={`px-5 py-2 rounded-full transition-all duration-300 text-sm font-medium ${
+                className={`px-6 py-2 rounded-full transition-all duration-300 text-sm font-medium ${
                   activeFilter === industry 
-                    ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-md' 
-                    : 'bg-white text-gray-600 hover:bg-gray-50'
+                    ? 'bg-black text-white shadow-md' 
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -276,9 +279,9 @@ export default function Testimonials(): JSX.Element {
       </section>
 
       {/* Testimonials Grid */}
-      <section className="py-16 bg-white">
+      <section className="py-8 bg-white">
         <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {filteredTestimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
@@ -286,60 +289,39 @@ export default function Testimonials(): JSX.Element {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group flex flex-col"
+                className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group transform hover:-translate-y-1"
               >
-                {/* Profile Section */}
-                <div className="flex items-center gap-4 p-6 border-b border-gray-100">
-                  <div className="w-14 h-14 rounded-full overflow-hidden">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      width={56}
-                      height={56}
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-800">{testimonial.name}</h3>
-                    <p className="text-sm text-primary">{testimonial.role}</p>
-                    <p className="text-sm text-gray-500">{testimonial.company}</p>
-                  </div>
-                </div>
-                
-                {/* Quote Section */}
-                <div className="p-6 flex-grow">
-                  <div className="flex items-start mb-4">
-                    <div className="text-2xl text-primary">"</div>
-                  </div>
-                  <blockquote className="text-gray-700 mb-4 line-clamp-4 group-hover:line-clamp-none transition-all duration-300">
-                    {testimonial.quote}
-                  </blockquote>
-                </div>
-                
-                {/* Project Details */}
-                <div className="p-6 bg-gray-50 border-t border-gray-100">
-                  <div className="flex justify-between items-center mb-3">
-                    <div className="font-medium text-gray-800">{testimonial.project}</div>
-                    <span className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full">
-                      {testimonial.industry}
-                    </span>
+                {/* Testimonial Card */}
+                <div className="relative h-full p-6 group-hover:bg-gray-50 transition-colors duration-300">
+                  <div className="h-full flex flex-col">
+                    {/* Testimonial Quote */}
+                    <div className="mb-6 flex-grow">
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        {testimonial.quote.length > 150 ? `${testimonial.quote.substring(0, 150)}...` : testimonial.quote}
+                      </p>
+                    </div>
+                    
+                    {/* Profile Info */}
+                    <div className="flex items-start">
+                      <div className="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-white shadow-md">
+                        <Image
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          width={48}
+                          height={48}
+                          className="object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-gray-900">{testimonial.name}</h3>
+                        <p className="text-xs text-gray-500">{testimonial.role}</p>
+                        <p className="text-xs text-primary">{testimonial.company}</p>
+                      </div>
+                    </div>
                   </div>
                   
-                  {testimonial.results && (
-                    <div className="mt-4">
-                      <p className="text-xs text-gray-500 mb-2">Key Results:</p>
-                      <ul className="space-y-1">
-                        {testimonial.results.map((result, i) => (
-                          <li key={i} className="text-sm text-gray-700 flex items-start">
-                            <svg className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span>{result}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                  {/* Gradient Background on Hover */}
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                 </div>
               </motion.div>
             ))}
@@ -392,7 +374,7 @@ export default function Testimonials(): JSX.Element {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -401,22 +383,22 @@ export default function Testimonials(): JSX.Element {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Transform Your Business?
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 font-display tracking-tight">
+              Ready to Transform<br />Your Business?
             </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
               Join these satisfied clients and experience the difference that strategic digital solutions can make.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-6">
               <Link 
                 href="/contact" 
-                className="btn btn-primary"
+                className="btn btn-primary text-white px-10 py-4"
               >
                 Start Your Project
               </Link>
               <Link 
                 href="/projects" 
-                className="btn btn-secondary"
+                className="btn btn-secondary text-white px-10 py-4"
               >
                 Explore Past Work
               </Link>

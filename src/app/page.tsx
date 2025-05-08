@@ -89,7 +89,7 @@ export default function Home(): JSX.Element {
               >
                 <Link 
                   href="/projects" 
-                  className="group btn btn-primary w-[80%] max-w-[280px] sm:w-auto text-center justify-center"
+                  className="group btn btn-primary w-[80%] max-w-[280px] sm:w-auto text-center justify-center text-white"
                 >
                   <span>Explore Projects</span>
                   <svg 

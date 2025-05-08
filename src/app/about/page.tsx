@@ -136,7 +136,7 @@ export default function About(): JSX.Element {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Link href="/contact" className="btn btn-primary">
+                    <Link href="/contact" className="btn btn-primary text-white">
                       Contact Me
                     </Link>
                   </motion.div>
@@ -146,7 +146,7 @@ export default function About(): JSX.Element {
                   >
                     <a
                       href="/resume.pdf"
-                      className="btn btn-secondary"
+                      className="btn btn-secondary text-white"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -180,7 +180,7 @@ export default function About(): JSX.Element {
               
               {[
                 {
-                  years: '2020-Present',
+                  years: '2025-Present',
                   title: 'Founder & Lead Developer',
                   company: 'Fxsion',
                   description: 'Leading a team of developers and automation specialists to deliver cutting-edge digital solutions for clients worldwide.',
@@ -190,9 +190,9 @@ export default function About(): JSX.Element {
                   icon: '🚀'
                 },
                 {
-                  years: '2018-2020',
+                  years: '2024-2025',
                   title: 'Senior Automation Consultant',
-                  company: 'Previous Role',
+                  company: 'Yacht Zero',
                   description: 'Specialized in workflow automation and CRM integrations, helping businesses optimize their operations.',
                   achievements: ['Reduced manual tasks by 75%', 'Implemented enterprise solutions', 'Managed client relationships'],
                   color: 'from-primary/80 to-primary',

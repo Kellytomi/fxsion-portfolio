@@ -27,7 +27,7 @@ export default function CustomCursor() {
     // Wait for page animations to finish (approximately)
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1200); // Adjust this timing based on your page transition animations
+    }, 600); // Reduced from 1200ms to 600ms
     
     return () => clearTimeout(timer);
   }, [pathname, searchParams]);
@@ -97,25 +97,18 @@ export default function CustomCursor() {
           animate={{
             scale: isLoading ? 1.2 : isClicking ? 0.8 : isHovering ? 1.5 : 1,
             opacity: isLoading ? 0.7 : isHovering ? 0.5 : 0.8,
-            rotate: isLoading ? 360 : 0,
+            // Removed rotation animation
           }}
           transition={{ 
-            duration: isLoading ? 1 : isClicking ? 0.1 : 0.2,
-            ease: isLoading ? "linear" : "easeInOut",
-            rotate: {
-              duration: 1.5,
-              repeat: isLoading ? Infinity : 0,
-              ease: "linear"
-            }
+            duration: isLoading ? 0.3 : isClicking ? 0.1 : 0.2,
+            ease: "easeInOut"
           }}
         >
           <div 
             className={`absolute w-8 h-8 rounded-full border-2 ${
               isLoading
-                ? 'border-secondary border-t-transparent' 
-                : isHovering 
-                  ? 'border-secondary' 
-                  : 'border-primary'
+                ? 'border-black border-t-transparent' 
+                : 'border-black'
             } -ml-4 -mt-4 transition-colors duration-300`}
           />
         </motion.div>
@@ -133,28 +126,15 @@ export default function CustomCursor() {
           className="relative flex items-center justify-center"
           animate={{
             scale: isLoading ? 0.6 : isClicking ? 1.5 : isHovering ? 0.5 : 1,
-            opacity: isLoading ? [0.2, 1, 0.2] : 1,
+            opacity: 1, // Removed opacity animation during loading
           }}
           transition={{ 
             duration: isClicking ? 0.1 : 0.2,
-            ease: "easeInOut",
-            opacity: {
-              duration: 1,
-              repeat: isLoading ? Infinity : 0,
-              ease: "easeInOut"
-            }
+            ease: "easeInOut"
           }}
         >
           <div 
-            className={`absolute w-2 h-2 rounded-full -ml-1 -mt-1 ${
-              isLoading
-                ? 'bg-secondary'
-                : isClicking 
-                  ? 'bg-secondary' 
-                  : isHovering 
-                    ? 'bg-secondary' 
-                    : 'bg-primary'
-            } transition-colors duration-300`}
+            className={`absolute w-2 h-2 rounded-full -ml-1 -mt-1 bg-black transition-colors duration-300`}
           />
         </motion.div>
       </motion.div>
@@ -173,12 +153,12 @@ export default function CustomCursor() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <div className="absolute w-8 h-8 rounded-full border border-primary -ml-4 -mt-4" />
+            <div className="absolute w-8 h-8 rounded-full border border-black -ml-4 -mt-4" />
           </motion.div>
         )}
       </AnimatePresence>
       
-      {/* Loading animation rings */}
+      {/* Simplified loading indicator - with secondary ring */}
       <AnimatePresence>
         {isLoading && (
           <>
@@ -189,15 +169,15 @@ export default function CustomCursor() {
                 y: cursorYSpring,
               }}
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: [0.1, 0.3, 0.1], scale: [0.8, 1.5, 0.8] }}
+              animate={{ opacity: [0.1, 0.3, 0.1], scale: [0.8, 1.2, 0.8] }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ 
-                duration: 1.5, 
+                duration: 0.8, 
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
             >
-              <div className="absolute w-12 h-12 rounded-full border border-primary/40 -ml-6 -mt-6" />
+              <div className="absolute w-10 h-10 rounded-full border border-black/30 -ml-5 -mt-5" />
             </motion.div>
             
             <motion.div
@@ -207,16 +187,16 @@ export default function CustomCursor() {
                 y: cursorYSpring,
               }}
               initial={{ opacity: 0, scale: 1 }}
-              animate={{ opacity: [0.05, 0.2, 0.05], scale: [1, 2, 1] }}
+              animate={{ opacity: [0.05, 0.2, 0.05], scale: [1, 1.5, 1] }}
               exit={{ opacity: 0, scale: 1 }}
               transition={{ 
-                duration: 2, 
+                duration: 1.2, 
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 0.2
               }}
             >
-              <div className="absolute w-16 h-16 rounded-full border border-secondary/20 -ml-8 -mt-8" />
+              <div className="absolute w-14 h-14 rounded-full border border-black/20 -ml-7 -mt-7" />
             </motion.div>
           </>
         )}

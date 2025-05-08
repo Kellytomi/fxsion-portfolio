@@ -27,7 +27,7 @@ export default function Navigation(): JSX.Element {
 
   return (
     <nav className="fixed w-full z-50">
-      <div className="glass-effect border-b border-white/10">
+      <div className="glass-effect">
         <div className="container mx-auto">
           <div className="flex items-center justify-between h-20">
             <Link href="/" className="flex items-center h-full">
@@ -48,7 +48,7 @@ export default function Navigation(): JSX.Element {
                   key={item.name}
                   href={item.href}
                   className={`relative group ${
-                    pathname === item.href ? 'text-primary' : 'text-text'
+                    pathname === item.href ? 'text-primary font-medium' : 'text-muted'
                   }`}
                 >
                   <span className="relative">
@@ -56,26 +56,22 @@ export default function Navigation(): JSX.Element {
                     {pathname === item.href && (
                       <motion.span
                         layoutId="underline"
-                        className="absolute left-0 top-full block h-0.5 w-full bg-gradient-to-r from-primary to-secondary"
+                        className="absolute left-0 top-full block h-0.5 w-full bg-black"
                       />
                     )}
                   </span>
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300" />
                 </Link>
               ))}
             </div>
 
             {/* Mobile Navigation Button */}
             <button
-              className="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
+              className="md:hidden p-2 hover:bg-black/5 rounded-lg transition-colors duration-200"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
-              {isOpen ? (
-                <XMarkIcon className="h-6 w-6 text-primary" />
-              ) : (
-                <Bars3Icon className="h-6 w-6 text-primary" />
-              )}
+              <Bars3Icon className="h-6 w-6 text-primary" />
             </button>
           </div>
         </div>
@@ -89,7 +85,7 @@ export default function Navigation(): JSX.Element {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden glass-effect border-b border-white/10"
+            className="md:hidden glass-effect"
           >
             <div className="container mx-auto py-4 space-y-4">
               {navItems.map((item) => (
@@ -98,8 +94,8 @@ export default function Navigation(): JSX.Element {
                   href={item.href}
                   className={`block px-4 py-2 rounded-lg transition-colors duration-200 ${
                     pathname === item.href
-                      ? 'bg-primary text-surface'
-                      : 'text-text hover:bg-white/10'
+                      ? 'bg-black text-white'
+                      : 'text-muted hover:bg-black/5'
                   }`}
                   onClick={() => setIsOpen(false)}
                 >

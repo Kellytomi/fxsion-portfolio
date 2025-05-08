@@ -7,13 +7,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#2D3047',  // Deep navy blue - more sophisticated than midnight
-        'secondary': '#93B7BE', // Soft blue-gray - modern accent
-        'accent': '#E4D9FF',   // Soft lavender - elegant highlight
-        'surface': '#F7F7F9',  // Off-white with slight blue tint
-        'text': '#2D3047',     // Matching primary for text
-        'muted': '#6B7280',    // Subtle gray for secondary text
-        'highlight': '#FFD700', // Pure gold for special highlights
+        'primary': '#000000',  // Pure black
+        'secondary': '#333333', // Dark gray
+        'accent': '#FFFFFF',   // Pure white
+        'surface': '#F8F8F8',  // Off-white
+        'text': '#121212',     // Nearly black for text
+        'muted': '#777777',    // Medium gray for secondary text
+        'highlight': '#FFFFFF', // White for highlights
       },
       fontFamily: {
         sans: ['var(--font-jakarta)'],
