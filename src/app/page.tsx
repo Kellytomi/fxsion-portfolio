@@ -229,7 +229,7 @@ export default function Home(): JSX.Element {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute bottom-8 left-0 right-0 mx-auto w-full flex flex-col items-center justify-center gap-2 text-center"
         >
           <span className="text-sm text-muted">Scroll to explore</span>
           <motion.div
