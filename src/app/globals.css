@@ -63,7 +63,7 @@
   
   .section-subtitle {
     @apply text-lg md:text-xl text-muted mb-12 tracking-normal;
-}
+  }
 
   .card {
     @apply bg-white rounded-xl shadow-soft hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1;
