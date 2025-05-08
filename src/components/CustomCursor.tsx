@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motio
 import { usePathname, useSearchParams } from 'next/navigation';
 
 export default function CustomCursor() {
+  const [mounted, setMounted] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,8 +21,15 @@ export default function CustomCursor() {
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
+  // Handle component mounting
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Handle loading state during route changes
   useEffect(() => {
+    if (!mounted) return;
+    
     setIsLoading(true);
     
     // Wait for page animations to finish (approximately)
@@ -30,13 +38,14 @@ export default function CustomCursor() {
     }, 600); // Reduced from 1200ms to 600ms
     
     return () => clearTimeout(timer);
-  }, [pathname, searchParams]);
+  }, [pathname, searchParams, mounted]);
 
   useEffect(() => {
+    if (!mounted) return;
+    
     // Skip on mobile or tablet as they don't need custom cursor
-    if (window.matchMedia('(max-width: 1024px)').matches) {
-      return;
-    }
+    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+    if (isMobile) return;
     
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
@@ -75,10 +84,16 @@ export default function CustomCursor() {
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, mounted]);
   
-  // Hide custom cursor on mobile/tablet
-  if (typeof window !== 'undefined' && window.matchMedia('(max-width: 1024px)').matches) {
+  // Don't render anything on server or before mounting
+  if (!mounted) {
+    return null;
+  }
+  
+  // Check for mobile only after component is mounted
+  const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+  if (isMobile) {
     return null;
   }
 
@@ -97,7 +112,6 @@ export default function CustomCursor() {
           animate={{
             scale: isLoading ? 1.2 : isClicking ? 0.8 : isHovering ? 1.5 : 1,
             opacity: isLoading ? 0.7 : isHovering ? 0.5 : 0.8,
-            // Removed rotation animation
           }}
           transition={{ 
             duration: isLoading ? 0.3 : isClicking ? 0.1 : 0.2,
@@ -126,7 +140,7 @@ export default function CustomCursor() {
           className="relative flex items-center justify-center"
           animate={{
             scale: isLoading ? 0.6 : isClicking ? 1.5 : isHovering ? 0.5 : 1,
-            opacity: 1, // Removed opacity animation during loading
+            opacity: 1,
           }}
           transition={{ 
             duration: isClicking ? 0.1 : 0.2,
@@ -158,7 +172,7 @@ export default function CustomCursor() {
         )}
       </AnimatePresence>
       
-      {/* Simplified loading indicator - with secondary ring */}
+      {/* Loading indicator with secondary ring */}
       <AnimatePresence>
         {isLoading && (
           <>
