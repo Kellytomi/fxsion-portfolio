@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -29,11 +30,15 @@ export default function Navigation(): JSX.Element {
       <div className="glass-effect border-b border-white/10">
         <div className="container mx-auto">
           <div className="flex items-center justify-between h-20">
-            <Link href="/" className="relative group">
-              <span className="font-display text-2xl font-bold gradient-text">
-                Fxsion
-              </span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300" />
+            <Link href="/" className="flex items-center h-full">
+              <Image 
+                src="/images/Fxsion.png" 
+                alt="Fxsion Logo" 
+                width={150} 
+                height={40} 
+                className="object-contain"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}

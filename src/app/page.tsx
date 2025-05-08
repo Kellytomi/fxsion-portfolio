@@ -20,70 +20,59 @@ export default function Home(): JSX.Element {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center">
+      <section className="relative min-h-[90vh] flex items-center">
         <motion.div 
           className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"
           style={{ y }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-surface to-white/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface to-white/50" />
         
         <div className="container relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col lg:flex-row items-center gap-12 py-20">
+            {/* Content */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-center lg:text-left"
+              className="flex-1 text-center lg:text-left"
             >
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="mb-6 inline-block"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary mb-8"
               >
-                <span className="px-4 py-2 rounded-full bg-primary/5 text-primary font-medium">
-                  Digital Innovation Expert
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                 </span>
+                <span className="font-medium">Available for Projects</span>
               </motion.div>
               
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
-                  className="block gradient-text"
+                  className="block gradient-text mb-2"
                 >
-                  Transforming
+                  Transforming Ideas
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.5 }}
-                  className="block"
+                  className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary/80"
                 >
-                  Ideas into
-                </motion.span>
-                <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  className="relative inline-block"
-                >
-                  Reality
-                  <motion.span
-                    className="absolute -bottom-2 left-0 w-full h-1 bg-highlight"
-                    initial={{ width: 0 }}
-                    animate={{ width: '100%' }}
-                    transition={{ delay: 0.8, duration: 0.3 }}
-                  />
+                  into Digital Reality
                 </motion.span>
               </h1>
               
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="text-xl text-muted mb-8 text-balance max-w-xl"
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="text-lg sm:text-xl text-muted mb-8 max-w-xl mx-auto lg:mx-0"
               >
                 Empowering businesses through intelligent automation, seamless integrations, 
                 and cutting-edge digital solutions.
@@ -92,43 +81,152 @@ export default function Home(): JSX.Element {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
-                <Link href="/projects" className="btn btn-primary">
-                  Explore Projects
+                <Link 
+                  href="/projects" 
+                  className="group btn btn-primary w-full sm:w-auto"
+                >
+                  <span>Explore Projects</span>
+                  <svg 
+                    className="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </Link>
-                <Link href="/contact" className="btn btn-secondary">
+                <Link 
+                  href="/contact"
+                  className="group btn btn-secondary w-full sm:w-auto hover:bg-primary/5"
+                >
                   Let's Connect
                 </Link>
               </motion.div>
+
+              {/* Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.5 }}
+                className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto lg:mx-0"
+              >
+                {[
+                  { number: '150+', label: 'Projects' },
+                  { number: '50+', label: 'Clients' },
+                  { number: '99%', label: 'Success' },
+                  { number: '24/7', label: 'Support' },
+                ].map((stat, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
+                    className="text-center"
+                  >
+                    <div className="font-display text-2xl sm:text-3xl font-bold gradient-text mb-1">
+                      {stat.number}
+                    </div>
+                    <div className="text-sm text-muted">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
             </motion.div>
 
+            {/* Illustration */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="relative hidden lg:block"
+              className="flex-1 relative w-full max-w-[500px] mx-auto"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl filter blur-3xl" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl filter blur-3xl opacity-40" />
               <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="relative"
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: [0, -1, 0]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
               >
-                <Image
-                  src="/hero-image.png"
-                  alt="Digital Automation Illustration"
-                  width={600}
-                  height={600}
-                  className="rounded-2xl"
-                />
+                <div className="relative">
+                  {/* Background Effects */}
+                  <motion.div
+                    className="absolute -top-8 -left-8 w-32 h-32"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      rotate: [0, 5, 0]
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 1
+                    }}
+                  >
+                    <div className="w-full h-full bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full filter blur-xl" />
+                  </motion.div>
+                  <motion.div
+                    className="absolute -bottom-12 -right-8 w-24 h-24"
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      rotate: [0, -5, 0]
+                    }}
+                    transition={{
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.5
+                    }}
+                  >
+                    <div className="w-full h-full bg-gradient-to-r from-secondary/10 to-primary/10 rounded-full filter blur-xl" />
+                  </motion.div>
+
+                  {/* Main Illustration */}
+                  <div className="relative aspect-square">
+                    <Image
+                      src="/images/Home1.png"
+                      alt="Digital Automation Illustration"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                      quality={100}
+                      className="object-contain drop-shadow-2xl"
+                      priority
+                    />
+                  </div>
+
+                  {/* Overlay Effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-tr from-white/0 via-primary/5 to-secondary/5 rounded-2xl z-20"
+                    animate={{
+                      opacity: [0, 0.5, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </div>
               </motion.div>
             </motion.div>
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        >
+          <span className="text-sm text-muted">Scroll to explore</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -149,7 +247,7 @@ export default function Home(): JSX.Element {
               />
             </svg>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Services Section */}
@@ -163,13 +261,13 @@ export default function Home(): JSX.Element {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="section-title">Our Expertise</h2>
+            <h2 className="section-title mb-4">Our Expertise</h2>
             <p className="section-subtitle max-w-2xl mx-auto">
               Delivering comprehensive digital solutions that drive growth and efficiency
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 title: 'Workflow Automation',
@@ -197,51 +295,30 @@ export default function Home(): JSX.Element {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="card p-8 group cursor-pointer"
+                className="card p-8 group cursor-pointer relative overflow-hidden"
               >
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 transform transition-transform group-hover:scale-110`}>
-                  <span className="text-3xl">{service.icon}</span>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative">
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 transform transition-transform group-hover:scale-110 group-hover:rotate-3`}>
+                    <span className="text-3xl">{service.icon}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-primary mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted">{service.description}</p>
+                  
+                  <div className="mt-6 flex items-center text-primary font-medium opacity-0 transform translate-y-2 transition-all group-hover:opacity-100 group-hover:translate-y-0">
+                    Learn More
+                    <svg 
+                      className="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-2" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary">
-                  {service.title}
-                </h3>
-                <p className="text-muted">{service.description}</p>
-                
-                <div className="mt-6 flex items-center text-primary font-medium opacity-0 transform translate-y-2 transition-all group-hover:opacity-100 group-hover:translate-y-0">
-                  Learn More
-                  <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-20 bg-primary/5 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
-        <div className="container relative">
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { number: '150+', label: 'Projects Completed' },
-              { number: '50+', label: 'Happy Clients' },
-              { number: '99%', label: 'Success Rate' },
-              { number: '24/7', label: 'Support' },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="font-display text-4xl font-bold gradient-text mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-muted">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -270,10 +347,10 @@ export default function Home(): JSX.Element {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <h2 className="font-display text-5xl font-bold mb-6 text-surface">
+            <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6 text-surface">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-xl mb-8 text-surface/80 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl mb-8 text-surface/80 max-w-2xl mx-auto">
               Let's collaborate to create innovative solutions that drive your business forward.
               The future of digital transformation starts here.
             </p>
@@ -283,9 +360,17 @@ export default function Home(): JSX.Element {
             >
               <Link 
                 href="/contact" 
-                className="btn bg-surface text-primary hover:bg-surface/90 hover:shadow-xl hover:shadow-white/10"
+                className="btn bg-surface text-primary hover:bg-surface/90 hover:shadow-xl hover:shadow-white/10 group"
               >
                 Start Your Journey
+                <svg 
+                  className="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-2" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </Link>
             </motion.div>
           </motion.div>
