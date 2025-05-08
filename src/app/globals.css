@@ -13,10 +13,12 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-jakarta), system-ui, sans-serif !important;
   }
-  
+
   body {
     @apply bg-surface text-text;
+    font-family: var(--font-jakarta), system-ui, sans-serif !important;
   }
 
   /* Custom cursor rules - keep default cursor visible */
@@ -31,6 +33,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
+    font-family: var(--font-syne), serif !important;
   }
 }
 
@@ -57,7 +60,7 @@
   
   .section-subtitle {
     @apply text-lg md:text-xl text-muted mb-12 tracking-normal;
-  }
+}
 
   .card {
     @apply bg-white rounded-xl shadow-soft hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1;
