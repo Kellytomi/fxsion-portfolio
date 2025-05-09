@@ -2,9 +2,10 @@
 FROM node:18-alpine AS build
 WORKDIR /app
 
-# Install dependencies
+# Install dependencies with better error handling
 COPY package.json package-lock.json* ./
-RUN npm ci
+# Use npm install instead of npm ci and add more verbosity
+RUN npm install --loglevel verbose
 
 # Copy source files
 COPY . .
