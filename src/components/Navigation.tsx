@@ -36,7 +36,7 @@ export default function Navigation(): JSX.Element {
                 alt="Fxsion Logo" 
                 width={150} 
                 height={40} 
-                className="object-contain"
+                className="object-contain mt-1"
                 priority
               />
             </Link>

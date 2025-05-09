@@ -9,6 +9,7 @@ export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   
@@ -24,11 +25,45 @@ export default function CustomCursor() {
   // Handle component mounting
   useEffect(() => {
     setMounted(true);
+    
+    // Detect if it's a touch device (more reliable than screen size)
+    const detectTouch = () => {
+      // Check for touch capability
+      const hasTouchAPI = 'ontouchstart' in window || 
+                          navigator.maxTouchPoints > 0 || 
+                          (navigator as any).msMaxTouchPoints > 0;
+      
+      // Check for mouse events to differentiate tablets with mouse
+      let hasMouseEvents = false;
+      
+      const mouseDetect = () => {
+        hasMouseEvents = true;
+        cleanup();
+      };
+      
+      // Add mouse-specific event listeners temporarily
+      window.addEventListener('mousemove', mouseDetect, { once: true });
+      window.addEventListener('mousedown', mouseDetect, { once: true });
+      
+      const cleanup = () => {
+        window.removeEventListener('mousemove', mouseDetect);
+        window.removeEventListener('mousedown', mouseDetect);
+      };
+      
+      // Wait a short time to detect mouse usage
+      setTimeout(() => {
+        cleanup();
+        // It's a touch device if it has touch capabilities AND no mouse events detected
+        setIsTouchDevice(hasTouchAPI && !hasMouseEvents);
+      }, 500);
+    };
+    
+    detectTouch();
   }, []);
 
   // Handle loading state during route changes
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || isTouchDevice) return;
     
     setIsLoading(true);
     
@@ -38,14 +73,10 @@ export default function CustomCursor() {
     }, 600); // Reduced from 1200ms to 600ms
     
     return () => clearTimeout(timer);
-  }, [pathname, searchParams, mounted]);
+  }, [pathname, searchParams, mounted, isTouchDevice]);
 
   useEffect(() => {
-    if (!mounted) return;
-    
-    // Skip on mobile or tablet as they don't need custom cursor
-    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
-    if (isMobile) return;
+    if (!mounted || isTouchDevice) return;
     
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
@@ -84,16 +115,10 @@ export default function CustomCursor() {
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [cursorX, cursorY, mounted]);
+  }, [cursorX, cursorY, mounted, isTouchDevice]);
   
-  // Don't render anything on server or before mounting
-  if (!mounted) {
-    return null;
-  }
-  
-  // Check for mobile only after component is mounted
-  const isMobile = window.matchMedia('(max-width: 1024px)').matches;
-  if (isMobile) {
+  // Don't render anything on server, before mounting, or on touch devices
+  if (!mounted || isTouchDevice) {
     return null;
   }
 
