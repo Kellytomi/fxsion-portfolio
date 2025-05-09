@@ -38,402 +38,306 @@ export default function About(): JSX.Element {
     <main className="min-h-screen bg-surface overflow-hidden" ref={containerRef}>
       <Navigation />
       
-      {/* Hero Section - Split Design */}
-      <section className="min-h-screen flex flex-col lg:flex-row">
-        {/* Left panel - Photo & Visual */}
-        <div className="w-full lg:w-1/2 relative h-[60vh] lg:h-screen bg-gradient-to-br from-primary/10 to-secondary/10">
-          <motion.div 
-            className="absolute inset-0 overflow-hidden"
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+      {/* Hero Section - Agency Story */}
+      <section className="pt-32 pb-24 bg-surface">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16 max-w-3xl mx-auto"
           >
-            <Image
-              src="/profile-full.jpg"
-              alt="Etoma-Etoto Kelvin Odi"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 mix-blend-multiply" />
+            <h1 className="section-title mb-6">Our Story</h1>
+            <p className="text-xl text-muted mb-6 leading-relaxed">
+              Fxsion was founded with a simple vision: to help businesses thrive in the digital age through intelligent automation and seamless digital experiences.
+            </p>
           </motion.div>
           
-          <div className="absolute bottom-0 left-0 w-full p-8 pb-16 lg:pb-20 bg-gradient-to-t from-black/80 to-transparent text-white">
-            <motion.h1 
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              className="relative rounded-2xl overflow-hidden"
+            >
+              <Image
+                src="/profile-full.jpg"
+                alt="Etoma-Etoto Kelvin Odi"
+                width={600}
+                height={700}
+                className="object-cover w-full h-full rounded-2xl shadow-xl"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl"></div>
+              <div className="absolute bottom-8 left-8">
+                <h3 className="text-2xl font-bold text-white mb-1">Etoma-Etoto Kelvin Odi</h3>
+                <p className="text-white/80">Founder & Lead Developer</p>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
             >
-              Etoma-Etoto Kelvin Odi
-            </motion.h1>
-            <motion.div 
-              className="inline-flex items-center space-x-2 text-surface/80"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.7 }}
-            >
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-              </span>
-              <p className="text-lg">Available for new opportunities</p>
+              <h2 className="text-3xl font-bold mb-6">The Fxsion Journey</h2>
+              <p className="text-lg text-muted mb-6 leading-relaxed">
+                After years of experience in workflow automation and software development, I noticed that many businesses struggle with disconnected systems, manual processes, and inefficient workflows.
+              </p>
+              <p className="text-lg text-muted mb-6 leading-relaxed">
+                Fxsion was established to bridge these gaps. We specialize in creating seamless integrations between different platforms, automating repetitive tasks, and building custom digital solutions that solve real business problems.
+              </p>
+              <p className="text-lg text-muted mb-8 leading-relaxed">
+                Today, we've helped dozens of clients transform their operations through smart automation and purpose-built digital solutions that drive efficiency and growth.
+              </p>
+              
+              <Link href="/contact" className="btn btn-primary text-white">
+                Let's Work Together
+              </Link>
             </motion.div>
-          </div>
-        </div>
-        
-        {/* Right panel - Introduction */}
-        <div className="w-full lg:w-1/2 bg-white relative">
-          <div className="h-full flex items-center">
-            <div className="p-8 md:p-12 lg:p-20">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-              >
-                <h2 className="text-3xl md:text-4xl font-bold mb-8 inline-block relative">
-                  Digital Solutions Expert
-                  <motion.span 
-                    className="absolute -bottom-2 left-0 h-1 bg-primary"
-                    initial={{ width: 0 }}
-                    animate={{ width: "33%" }}
-                    transition={{ delay: 0.8, duration: 0.8 }}
-                  />
-                </h2>
-                
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  I'm the founder of Fxsion, specializing in workflow automation, document solutions, and digital development. With a passion for transforming businesses through technology, I help companies streamline operations and achieve their digital goals.
-                </p>
-                
-                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  My expertise lies in connecting systems, automating workflows, and building custom digital solutions that solve real business problems.
-                </p>
-                
-                <div className="flex flex-wrap gap-3 mb-10">
-                  {[
-                    { name: 'Workflow Automation', icon: '⚡' },
-                    { name: 'Document Solutions', icon: '📄' },
-                    { name: 'API Integrations', icon: '🔄' },
-                    { name: 'Web Development', icon: '💻' }
-                  ].map((skill, index) => (
-                    <motion.span 
-                      key={index}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 + (index * 0.1), duration: 0.5 }}
-                      className="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium flex items-center gap-1.5"
-                    >
-                      <span>{skill.icon}</span>
-                      <span>{skill.name}</span>
-                    </motion.span>
-                  ))}
-                </div>
-                
-                <div className="flex flex-wrap gap-4">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Link href="/contact" className="btn btn-primary text-white">
-                      Contact Me
-                    </Link>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <a
-                      href="/resume.pdf"
-                      className="btn btn-secondary text-white"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Resume
-                    </a>
-                  </motion.div>
-                </div>
-              </motion.div>
-            </div>
           </div>
         </div>
       </section>
       
-      {/* Experience Cards */}
-      <section className="py-20 bg-surface">
+      {/* Mission & Values */}
+      <section className="py-24 bg-white">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-5xl mx-auto"
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold mb-16 text-center">
-              My Professional Journey
-            </h2>
-            
-            <div className="relative space-y-0">
-              {/* Timeline line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gray-200 hidden md:block" />
-              
-              {[
-                {
-                  years: '2025-Present',
-                  title: 'Founder & Lead Developer',
-                  company: 'Fxsion',
-                  description: 'Leading a team of developers and automation specialists to deliver cutting-edge digital solutions for clients worldwide.',
-                  achievements: ['Led 50+ client projects', 'Built custom automation solutions', 'Trained junior developers'],
-                  color: 'from-primary/80 to-primary',
-                  hoverColor: 'from-teal-400 to-teal-600',
-                  icon: '🚀'
-                },
-                {
-                  years: '2024-2025',
-                  title: 'Senior Automation Consultant',
-                  company: 'Yacht Zero',
-                  description: 'Specialized in workflow automation and CRM integrations, helping businesses optimize their operations.',
-                  achievements: ['Reduced manual tasks by 75%', 'Implemented enterprise solutions', 'Managed client relationships'],
-                  color: 'from-primary/80 to-primary',
-                  hoverColor: 'from-red-400 to-red-600',
-                  icon: '⚙️'
-                },
-                {
-                  years: '2016-2018',
-                  title: 'Full Stack Developer',
-                  company: 'Previous Role',
-                  description: 'Developed web and mobile applications using modern technologies like Next.js and Flutter.',
-                  achievements: ['Built responsive websites', 'Developed mobile applications', 'Frontend and backend expertise'],
-                  color: 'from-primary/80 to-primary',
-                  hoverColor: 'from-green-400 to-green-600',
-                  icon: '💻'
-                }
-              ].map((experience, index) => (
-                <div key={index} className="md:grid md:grid-cols-2 relative mb-16">
-                  {/* Timeline dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/3 z-10 hidden md:block">
-                    <div className="w-5 h-5 bg-white rounded-full border-4 border-primary shadow-md" />
-                  </div>
-
-                  {/* Left or right alignment based on index */}
-                  <div className={`${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:col-start-2'}`}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="bg-white rounded-xl shadow-lg overflow-hidden h-full transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group"
-                    >
-                      {/* Date/Company header */}
-                      <div 
-                        className={`p-5 text-white relative overflow-hidden transition-all duration-500`}
-                        style={{
-                          background: 'linear-gradient(to right, var(--card-gradient-from, #2D3047CC), var(--card-gradient-to, #2D3047))'
-                        } as React.CSSProperties}
-                        onMouseEnter={(e) => handleCardHover(
-                          e.currentTarget, 
-                          experience.hoverColor.split(' '), 
-                          true
-                        )}
-                        onMouseLeave={(e) => handleCardHover(
-                          e.currentTarget, 
-                          experience.hoverColor.split(' '), 
-                          false
-                        )}
-                      >
-                        <div className="absolute right-0 bottom-0 opacity-10 text-6xl">{experience.icon}</div>
-                        <h3 className="text-2xl font-bold mb-1">{experience.years}</h3>
-                        <p className="opacity-90 text-sm">{experience.company}</p>
-                      </div>
-                      
-                      {/* Content */}
-                      <div className="p-6">
-                        <h4 className="text-xl font-bold text-primary mb-3">
-                          {experience.title}
-                        </h4>
-                        <p className="text-gray-600 mb-4">
-                          {experience.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {experience.achievements.map((achievement, i) => (
-                            <span key={i} className="inline-flex items-center px-3 py-1 rounded bg-primary/5 text-primary/80 text-sm">
-                              <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                              </svg>
-                              {achievement}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-      
-      {/* Skills & Values */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-        
-        <div className="container relative">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 max-w-6xl mx-auto">
-            {/* Skills */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl font-bold mb-10 inline-block relative">
-                My Skills
-                <motion.span 
-                  className="absolute -bottom-2 left-0 h-1 bg-primary"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "25%" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                />
-              </h2>
-              
-              <div className="space-y-6">
-                {[
-                  { name: 'Workflow Automation', level: 95, icon: '⚡' },
-                  { name: 'API Integrations', level: 90, icon: '🔄' },
-                  { name: 'Document Solutions', level: 92, icon: '📄' },
-                  { name: 'Web Development', level: 88, icon: '💻' },
-                  { name: 'Project Management', level: 85, icon: '📊' },
-                ].map((skill, index) => (
-                  <div key={index} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium flex items-center gap-2">
-                        <span className="inline-block w-6 text-center">{skill.icon}</span>
-                        {skill.name}
-                      </span>
-                      <span className="text-primary">{skill.level}%</span>
-                    </div>
-                    <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.3 + (index * 0.1) }}
-                        className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-            
-            {/* Core Values */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl font-bold mb-10 inline-block relative">
-                Core Values
-                <motion.span 
-                  className="absolute -bottom-2 left-0 h-1 bg-secondary"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "25%" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                />
-              </h2>
-              
-              <div className="space-y-8">
-                {[
-                  { 
-                    title: 'Innovation', 
-                    description: 'Constantly exploring new technologies and approaches to deliver better solutions.',
-                    icon: '💡'
-                  },
-                  { 
-                    title: 'Excellence', 
-                    description: 'Committed to delivering high-quality work that exceeds expectations.',
-                    icon: '⭐' 
-                  },
-                  { 
-                    title: 'Collaboration', 
-                    description: 'Working closely with clients to understand their needs and achieve their goals.',
-                    icon: '🤝' 
-                  },
-                ].map((value, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    whileHover={{ x: 5 }}
-                    className="flex gap-4 items-start p-4 rounded-lg hover:bg-gradient-to-r hover:from-primary/5 hover:to-transparent transition-all duration-300"
-                  >
-                    <div className="shrink-0 w-12 h-12 flex items-center justify-center text-2xl bg-primary/10 rounded-full">
-                      {value.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2 text-primary">
-                        {value.title}
-                      </h3>
-                      <p className="text-gray-600">
-                        {value.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-      
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary/5 to-secondary/5">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Let's Build Something Amazing Together
-            </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Whether you're looking to automate workflows, develop custom solutions, or transform your digital presence, I'm here to help.
+            <h2 className="section-title mb-4">Mission & Values</h2>
+            <p className="section-subtitle max-w-2xl mx-auto">
+              The principles that guide everything we do
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Client Success First',
+                description: 'We measure our success by the success of our clients. Every solution we build is designed to deliver tangible business outcomes.',
+                icon: '🏆',
+                color: 'bg-gradient-to-br from-amber-400 to-amber-600',
+              },
+              {
+                title: 'Innovative Simplicity',
+                description: 'We believe in the power of simplicity. Our solutions are innovative yet intuitive, making complexity manageable.',
+                icon: '💡',
+                color: 'bg-gradient-to-br from-blue-400 to-blue-600',
+              },
+              {
+                title: 'Continuous Improvement',
+                description: 'Technology evolves, and so do we. We are committed to continuous learning and refining our craft to deliver the best solutions.',
+                icon: '📈',
+                color: 'bg-gradient-to-br from-green-400 to-green-600',
+              },
+              {
+                title: 'Transparent Communication',
+                description: 'We believe in clear, open communication throughout every project. No jargon, no hidden agendas – just honest collaboration.',
+                icon: '🔄',
+                color: 'bg-gradient-to-br from-purple-400 to-purple-600',
+              },
+              {
+                title: 'Quality Craftsmanship',
+                description: 'We take pride in our work and pay meticulous attention to detail. Every solution we build reflects our commitment to excellence.',
+                icon: '⚒️',
+                color: 'bg-gradient-to-br from-red-400 to-red-600',
+              },
+              {
+                title: 'Long-term Partnerships',
+                description: 'We don\'t just build and leave. We form lasting partnerships with our clients, providing ongoing support and growth strategies.',
+                icon: '🤝',
+                color: 'bg-gradient-to-br from-teal-400 to-teal-600',
+              },
+            ].map((value, index) => (
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white p-8 rounded-xl shadow-soft border border-gray-100 transition-all duration-300 hover:shadow-lg hover:border-primary/10"
               >
-                <Link 
-                  href="/contact" 
-                  className="btn btn-primary"
-                >
-                  Start a Project
-                </Link>
+                <div className={`w-16 h-16 ${value.color} rounded-full flex items-center justify-center text-2xl mb-6 shadow-md`}>
+                  {value.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-4">{value.title}</h3>
+                <p className="text-muted">{value.description}</p>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Team Section */}
+      <section className="py-24 bg-surface">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h2 className="section-title mb-4">Our Team</h2>
+            <p className="section-subtitle max-w-2xl mx-auto">
+              Meet the people behind Fxsion's innovative solutions
+            </p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: 'Etoma-Etoto Kelvin Odi',
+                role: 'Founder & Lead Developer',
+                bio: 'Expert in workflow automation and integration solutions. Passionate about helping businesses achieve digital transformation.',
+                image: '/profile-full.jpg'
+              },
+              {
+                name: 'Jane Smith',
+                role: 'UX/UI Designer',
+                bio: 'Creates beautiful, user-centered designs that balance form and function. Expert in Figma and design systems.',
+                image: '/team/designer.jpg'
+              },
+              {
+                name: 'Alex Johnson',
+                role: 'Full Stack Developer',
+                bio: 'Specializes in React, Node.js, and database architecture. Loves solving complex technical challenges.',
+                image: '/team/developer.jpg'
+              }
+            ].map((member, index) => (
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-xl overflow-hidden shadow-soft group hover:shadow-xl transition-all duration-300"
               >
-                <Link 
-                  href="/projects" 
-                  className="btn btn-secondary"
-                >
-                  View My Work
-                </Link>
+                <div className="relative h-80">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-1">{member.name}</h3>
+                  <p className="text-primary font-medium mb-4">{member.role}</p>
+                  <p className="text-muted">{member.bio}</p>
+                </div>
               </motion.div>
-            </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Tech Stack Section */}
+      <section className="py-24 bg-white">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h2 className="section-title mb-4">Our Tech Stack</h2>
+            <p className="section-subtitle max-w-2xl mx-auto">
+              The powerful tools and technologies we leverage to build exceptional solutions
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[
+              { name: 'Next.js', icon: '/skills/nextjs.svg' },
+              { name: 'React', icon: '/skills/react.svg' },
+              { name: 'TypeScript', icon: '/skills/typescript.svg' },
+              { name: 'Node.js', icon: '/skills/nodejs.svg' },
+              { name: 'Flutter', icon: '/skills/flutter.svg' },
+              { name: 'Zapier', icon: '/skills/zapier.svg' },
+              { name: 'Make.com', icon: '/skills/make.svg' },
+              { name: 'Airtable', icon: '/skills/airtable.svg' },
+              { name: 'Notion', icon: '/skills/notion.svg' },
+              { name: 'PandaDoc', icon: '/skills/pandadoc.svg' },
+              { name: 'DocuSign', icon: '/skills/docusign.svg' },
+              { name: 'Figma', icon: '/skills/figma.svg' },
+            ].map((tech, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="bg-white p-6 rounded-xl shadow-soft border border-gray-100 transition-all duration-300 hover:shadow-md hover:border-primary/10 flex flex-col items-center"
+              >
+                <div className="w-16 h-16 mb-4 bg-gray-50 rounded-full p-3 flex items-center justify-center">
+                  <Image
+                    src={tech.icon}
+                    alt={tech.name}
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                  />
+                </div>
+                <h3 className="text-center font-medium">{tech.name}</h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* CTA Section */}
+      <section className="py-24 bg-primary relative overflow-hidden">
+        <motion.div 
+          className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"
+          animate={{ 
+            scale: [1, 1.1, 1],
+            rotate: [0, 5, 0]
+          }}
+          transition={{ 
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <div className="container relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6 text-surface">
+              Ready to Work Together?
+            </h2>
+            <p className="text-lg sm:text-xl mb-8 text-surface/80">
+              Let's discuss how Fxsion can help transform your business with custom automation and digital solutions.
+            </p>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link 
+                href="/contact" 
+                className="btn bg-surface text-primary hover:bg-surface/90 hover:shadow-xl hover:shadow-white/10 group"
+              >
+                Book a Discovery Call
+                <svg 
+                  className="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-2" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>

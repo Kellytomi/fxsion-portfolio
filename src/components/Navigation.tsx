@@ -14,9 +14,9 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Skills', href: '/skills' },
-  { name: 'Projects', href: '/projects' },
+  { name: 'About Us', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Portfolio', href: '/projects' },
   { name: 'Testimonials', href: '/testimonials' },
   { name: 'Contact', href: '/contact' },
 ];
@@ -66,42 +66,57 @@ export default function Navigation(): JSX.Element {
             </div>
 
             {/* Mobile Navigation Button */}
-            <button
-              className="md:hidden p-2 hover:bg-black/5 rounded-lg transition-colors duration-200"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-            >
-              <Bars3Icon className="h-6 w-6 text-primary" />
-            </button>
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="p-2"
+                aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              >
+                {isOpen ? (
+                  <XMarkIcon className="w-6 h-6" />
+                ) : (
+                  <Bars3Icon className="w-6 h-6" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Navigation Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden glass-effect"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white border-b border-gray-100 shadow-lg overflow-hidden"
           >
-            <div className="container mx-auto py-4 space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`block px-4 py-2 rounded-lg transition-colors duration-200 ${
-                    pathname === item.href
-                      ? 'bg-black text-white'
-                      : 'text-muted hover:bg-black/5'
-                  }`}
+            <div className="container mx-auto py-4">
+              <div className="flex flex-col space-y-4">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`px-4 py-2 rounded-md ${
+                      pathname === item.href
+                        ? 'bg-primary/10 text-primary font-medium'
+                        : 'text-muted hover:bg-gray-50'
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+                
+                <Link 
+                  href="/contact" 
+                  className="btn btn-primary text-white text-center mx-4 mt-2"
                   onClick={() => setIsOpen(false)}
                 >
-                  {item.name}
+                  Book a Discovery Call
                 </Link>
-              ))}
+              </div>
             </div>
           </motion.div>
         )}

@@ -49,7 +49,7 @@ export default function Home(): JSX.Element {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                 </span>
-                <span className="font-medium">Available for Projects</span>
+                <span className="font-medium">Digital Solutions Agency</span>
               </motion.div>
               
               <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-center lg:text-left">
@@ -59,7 +59,7 @@ export default function Home(): JSX.Element {
                   transition={{ delay: 0.3, duration: 0.5 }}
                   className="block gradient-text mb-2"
                 >
-                  Transforming Ideas
+                  Automate, Integrate, Elevate
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ export default function Home(): JSX.Element {
                   transition={{ delay: 0.4, duration: 0.5 }}
                   className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary/80"
                 >
-                  into Digital Reality
+                  Your Digital Workflow
                 </motion.span>
               </h1>
               
@@ -77,8 +77,9 @@ export default function Home(): JSX.Element {
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="text-lg sm:text-xl text-muted mb-8 max-w-xl mx-auto lg:mx-0 text-center lg:text-left"
               >
-                Empowering businesses through intelligent automation, seamless integrations, 
-                and cutting-edge digital solutions.
+                Fxsion specializes in workflow automation, web & mobile development, 
+                and proposal design solutions that streamline your business operations 
+                and boost productivity.
               </motion.p>
               
               <motion.div
@@ -88,10 +89,10 @@ export default function Home(): JSX.Element {
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
               >
                 <Link 
-                  href="/projects" 
+                  href="/contact" 
                   className="group btn btn-primary w-[80%] max-w-[280px] sm:w-auto text-center justify-center text-white"
                 >
-                  <span>Explore Projects</span>
+                  <span>Book a Discovery Call</span>
                   <svg 
                     className="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" 
                     fill="none" 
@@ -102,10 +103,10 @@ export default function Home(): JSX.Element {
                   </svg>
                 </Link>
                 <Link 
-                  href="/contact"
+                  href="/projects"
                   className="group btn btn-secondary w-[80%] max-w-[280px] sm:w-auto text-center justify-center hover:bg-primary/5"
                 >
-                  Let's Connect
+                  See Our Work
                 </Link>
               </motion.div>
 
@@ -114,7 +115,7 @@ export default function Home(): JSX.Element {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.5 }}
-                className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto lg:mx-0"
+                className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto lg:mx-0 mb-10 sm:mb-16 md:mb-12"
               >
                 {[
                   { number: 150, suffix: '+', label: 'Projects' },
@@ -231,7 +232,7 @@ export default function Home(): JSX.Element {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.5 }}
-          className="absolute bottom-8 left-0 right-0 mx-auto w-full flex flex-col items-center justify-center gap-2 text-center"
+          className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 mx-auto w-full flex flex-col items-center justify-center gap-2 text-center mt-12 sm:mt-16 md:mt-0"
         >
           <span className="text-sm text-muted">Scroll to explore</span>
           <motion.div
@@ -268,31 +269,37 @@ export default function Home(): JSX.Element {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="section-title mb-4">Our Expertise</h2>
+            <h2 className="section-title mb-4">Our Services</h2>
             <p className="section-subtitle max-w-2xl mx-auto">
-              Delivering comprehensive digital solutions that drive growth and efficiency
+              Comprehensive digital solutions that streamline your operations and drive business growth
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 title: 'Workflow Automation',
-                description: 'Streamline operations with intelligent automation using Zapier, Make, and custom integrations.',
+                description: 'Streamline operations and eliminate manual tasks with intelligent automation using Zapier, Make.com, and custom integrations.',
                 icon: '⚡',
                 gradient: 'from-[#FF6B6B] to-[#4ECDC4]',
               },
               {
-                title: 'Document Solutions',
-                description: 'Transform document processes with smart automation and seamless CRM integration.',
-                icon: '📄',
-                gradient: 'from-[#A8E6CF] to-[#3D84A8]',
-              },
-              {
-                title: 'Digital Development',
-                description: 'Create powerful web and mobile applications using cutting-edge technologies.',
+                title: 'Web Development',
+                description: 'Create modern, responsive websites using Next.js, React, and Tailwind CSS that engage visitors and drive conversions.',
                 icon: '💻',
                 gradient: 'from-[#FFD93D] to-[#FF6B6B]',
+              },
+              {
+                title: 'Mobile App Development',
+                description: 'Build cross-platform mobile apps with Flutter that deliver seamless experiences on both iOS and Android devices.',
+                icon: '📱',
+                gradient: 'from-[#6246EA] to-[#E45858]',
+              },
+              {
+                title: 'Proposal & Document Automation',
+                description: 'Transform document workflows with PandaDoc, Zapier, and custom solutions that save time and improve win rates.',
+                icon: '📄',
+                gradient: 'from-[#A8E6CF] to-[#3D84A8]',
               },
             ].map((service, index) => (
               <motion.div
@@ -301,29 +308,171 @@ export default function Home(): JSX.Element {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="card p-8 group cursor-pointer relative overflow-hidden"
+                whileHover={{ y: -10 }}
+                className="bg-white rounded-xl shadow-soft p-8 transition-all duration-300 hover:shadow-xl group"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 transform transition-transform group-hover:scale-110 group-hover:rotate-3`}>
-                    <span className="text-3xl">{service.icon}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-primary mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted">{service.description}</p>
-                  
-                  <div className="mt-6 flex items-center text-primary font-medium opacity-0 transform translate-y-2 transition-all group-hover:opacity-100 group-hover:translate-y-0">
-                    Learn More
-                    <svg 
-                      className="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-2" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
+                <div className={`h-14 w-14 flex items-center justify-center text-2xl mb-6 rounded-xl bg-gradient-to-r ${service.gradient} text-white transform transition-transform group-hover:scale-110`}>
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+                <p className="text-muted text-sm leading-relaxed">{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Projects Section */}
+      <section className="py-32 bg-surface relative">
+        <div className="container relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
           >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <h2 className="section-title mb-4">Featured Projects</h2>
+            <p className="section-subtitle max-w-2xl mx-auto">
+              Explore some of our most successful client projects and solutions
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+            {[
+              {
+                title: 'Yacht Zero',
+                description: 'A modern platform revolutionizing the yacht charter industry with innovative booking solutions.',
+                image: '/projects/yacht-zero.jpg',
+                tags: ['Next.js', 'React', 'API Integration'],
+              },
+              {
+                title: 'Enterprise Workflow Automation',
+                description: 'Automated end-to-end business processes for a Fortune 500 company, resulting in 75% reduction in manual tasks.',
+                image: '/projects/workflow-automation.jpg',
+                tags: ['Zapier', 'Make.com', 'APIs'],
+              },
+              {
+                title: 'Document Processing System',
+                description: 'Built a sophisticated document automation system handling 10,000+ documents monthly for a legal firm.',
+                image: '/projects/document-system.jpg',
+                tags: ['PandaDoc', 'Document AI', 'Node.js'],
+              },
+            ].map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group overflow-hidden rounded-xl shadow-soft hover:shadow-xl transition-all duration-300"
+              >
+                <div className="relative h-56 overflow-hidden">
+          <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-xl mb-2">{project.title}</h3>
+                  <p className="text-muted text-sm mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="px-3 py-1 bg-primary/5 rounded-full text-xs text-primary"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/projects"
+              className="btn btn-secondary inline-flex items-center"
+            >
+              View All Projects
+              <svg
+                className="w-4 h-4 ml-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-32 bg-white relative">
+        <div className="container relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h2 className="section-title mb-4">Client Testimonials</h2>
+            <p className="section-subtitle max-w-2xl mx-auto">
+              What our clients say about working with Fxsion
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                quote: "Working with Fxsion transformed our business processes. The automation solutions they implemented saved us countless hours and dramatically improved our efficiency.",
+                name: "Sarah Johnson",
+                role: "Operations Director, TechFlow Inc.",
+                image: "/testimonials/testimonial-1.jpg",
+              },
+              {
+                quote: "The team at Fxsion delivered beyond our expectations. Their expertise in both technical development and business process optimization is truly impressive.",
+                name: "Michael Chen",
+                role: "CEO, InnovateX",
+                image: "/testimonials/testimonial-2.jpg",
+              },
+            ].map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-xl shadow-soft p-8 border border-gray-100"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="mb-6 text-2xl text-primary">
+                    <svg width="45" height="36" viewBox="0 0 45 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M13.3 36C8.9 36 5.33333 34.4667 2.6 31.4C0.866667 29.1333 0 26.3333 0 23C0 16.6 3.4 10.9333 10.2 6C14.2 3.33333 19.3333 1.33333 25.6 0L28.7 7C23.5 8.2 19.5 9.86667 16.7 12C13.9 14.1333 12.5 16.4667 12.5 19C12.6333 19 12.9 19 13.3 19C16.7667 19 19.6 20.1333 21.8 22.4C24 24.6667 25.1 27.4667 25.1 30.8C25.1 32.8 24.3 34.4667 22.7 35.8C20.3667 35.9333 17.3 36 13.5 36H13.3ZM38.8 36C34.4 36 30.8333 34.4667 28.1 31.4C26.3667 29.1333 25.5 26.3333 25.5 23C25.5 16.6 28.9 10.9333 35.7 6C39.7 3.33333 44.8333 1.33333 51.1 0L54.2 7C49 8.2 45 9.86667 42.2 12C39.4 14.1333 38 16.4667 38 19C38.1333 19 38.4 19 38.8 19C42.2667 19 45.1 20.1333 47.3 22.4C49.5 24.6667 50.6 27.4667 50.6 30.8C50.6 32.8 49.8 34.4667 48.2 35.8C45.8667 35.9333 42.8 36 39 36H38.8Z" fill="currentColor" fillOpacity="0.1"/>
                     </svg>
+                  </div>
+                  <p className="text-muted mb-6 flex-grow italic">{testimonial.quote}</p>
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 rounded-full overflow-hidden mr-4 bg-gray-200 flex-shrink-0">
+          <Image
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        width={48}
+                        height={48}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-bold">{testimonial.name}</h4>
+                      <p className="text-sm text-muted">{testimonial.role}</p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -355,11 +504,11 @@ export default function Home(): JSX.Element {
             className="text-center"
           >
             <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6 text-surface">
-              Ready to Transform Your Business?
+              Let's Build Something Incredible Together
             </h2>
             <p className="text-lg sm:text-xl mb-8 text-surface/80 max-w-2xl mx-auto">
-              Let's collaborate to create innovative solutions that drive your business forward.
-              The future of digital transformation starts here.
+              Ready to transform your business with intelligent automation and cutting-edge 
+              digital solutions? Get in touch today to start your journey.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -369,13 +518,13 @@ export default function Home(): JSX.Element {
                 href="/contact" 
                 className="btn bg-surface text-primary hover:bg-surface/90 hover:shadow-xl hover:shadow-white/10 group"
               >
-                Start Your Journey
+                Book a Discovery Call
                 <svg 
                   className="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-2" 
                   fill="none" 
                   viewBox="0 0 24 24" 
                   stroke="currentColor"
-        >
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
