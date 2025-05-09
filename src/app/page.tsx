@@ -104,7 +104,7 @@ export default function Home(): JSX.Element {
                 </Link>
                 <Link 
                   href="/projects"
-                  className="group btn btn-secondary w-[80%] max-w-[280px] sm:w-auto text-center justify-center hover:bg-primary/5"
+                  className="group btn btn-secondary w-[80%] max-w-[280px] sm:w-auto text-center justify-center hover:bg-secondary/90 hover:text-white"
                 >
                   See Our Work
                 </Link>

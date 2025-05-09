@@ -54,7 +54,7 @@
   }
   
   .btn-secondary {
-    @apply bg-secondary text-white hover:bg-opacity-90;
+    @apply bg-secondary text-white hover:bg-secondary/90;
   }
   
   .section-title {
