@@ -1,16 +1,17 @@
-# Fxsion Portfolio Website
+# Fxsion - Digital Solutions Agency
 
-A modern, professional portfolio website for Etoma-Etoto Kelvin Odi, founder of Fxsion - a digital solutions agency specializing in workflow automation, document solutions, and digital development.
+A modern, professional website for Fxsion - a digital solutions agency specializing in workflow automation, web development, mobile app development, and document automation solutions that streamline business operations and boost productivity.
 
 ## Features
 
 - Responsive design optimized for all devices
-- Modern UI with smooth animations
-- 6 key pages: Home, About, Skills, Projects, Testimonials, and Contact
-- Contact form with email integration
-- Project showcase with visual elements
-- Skills visualization with progress bars
-- Client testimonials and success stories
+- Modern UI with smooth animations and interactions
+- Custom cursor and interactive elements
+- Comprehensive services section highlighting key offerings
+- Project showcase with case studies
+- Client testimonials and success metrics
+- Contact form with integrated booking system
+- Dockerized for easy deployment
 
 ## Tech Stack
 
@@ -19,14 +20,16 @@ A modern, professional portfolio website for Etoma-Etoto Kelvin Odi, founder of 
 - TypeScript
 - Tailwind CSS
 - Framer Motion
-- EmailJS
+- Docker for containerization
+- Responsive image optimization
+- CSS animations and transitions
 
 ## Getting Started
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/fxsion-portfolio.git
-cd fxsion-portfolio
+git clone https://github.com/yourusername/fxsion-agency.git
+cd fxsion-agency
 ```
 
 2. Install dependencies:
@@ -34,65 +37,75 @@ cd fxsion-portfolio
 npm install
 ```
 
-3. Create a `.env.local` file in the root directory and add your EmailJS credentials:
-```
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
-```
-
-4. Run the development server:
+3. Run the development server:
 ```bash
 npm run dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Docker Deployment
+
+The project includes a Dockerfile for containerized deployment:
+
+```bash
+# Build the Docker image
+docker build -t fxsion-agency .
+
+# Run the container
+docker run -p 3000:3000 fxsion-agency
+```
 
 ## Project Structure
 
 ```
 src/
-├── app/                    # Next.js app directory
+├── app/                   # Next.js app directory
 │   ├── about/             # About page
 │   ├── contact/           # Contact page
 │   ├── projects/          # Projects page
-│   ├── skills/            # Skills page
 │   ├── testimonials/      # Testimonials page
 │   ├── globals.css        # Global styles
 │   └── layout.tsx         # Root layout
 ├── components/            # Reusable components
-│   └── Navigation.tsx     # Navigation component
-└── public/               # Static assets
-    ├── projects/         # Project images
-    └── testimonials/     # Testimonial images
+│   ├── Navigation.tsx     # Navigation component
+│   ├── CountUp.tsx        # Animated counter component
+│   ├── CustomCursor.tsx   # Custom cursor component
+│   └── PageSpacer.tsx     # Layout utility component
+└── public/                # Static assets
+    ├── images/            # General images
+    ├── projects/          # Project images
+    ├── skills/            # Technology icons
+    └── testimonials/      # Testimonial images
 ```
+
+## Services Offered
+
+Fxsion specializes in:
+
+1. **Workflow Automation** - Streamline operations using Zapier, Make.com, and custom integrations
+2. **Web Development** - Create modern, responsive websites using Next.js, React, and Tailwind CSS
+3. **Mobile App Development** - Build cross-platform mobile apps with Flutter
+4. **Proposal & Document Automation** - Transform document workflows with PandaDoc and custom solutions
 
 ## Customization
 
-1. Update the content in each page component to match your information
-2. Replace images in the `public` directory with your own
-3. Modify the color scheme in `tailwind.config.js`
-4. Update contact information and social media links
-5. Add your own projects and testimonials
+1. Update content in each page component to match your offerings and services
+2. Replace images in the `public` directory with your own project examples
+3. Modify color schemes in `tailwind.config.js` and theme variables in `globals.css`
+4. Update contact information, booking links, and social media profiles
 
-## Deployment
+## Deployment Options
 
-The site can be deployed to any platform that supports Next.js applications, such as Vercel, Netlify, or AWS Amplify.
+The site can be deployed using:
 
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- **Docker**: Using the included Dockerfile (recommended)
+- **Vercel**: Direct integration with GitHub repository
+- **Netlify**: Automated builds from Git
+- **AWS Amplify**: Scalable hosting with CI/CD pipeline
 
 ## Contact
 
-Etoma-Etoto Kelvin Odi - [contact@fxsion.com](mailto:contact@fxsion.com)
+Fxsion Digital Solutions - [hello@fxsion.com](mailto:hello@fxsion.com)
 
-Project Link: [https://github.com/yourusername/fxsion-portfolio](https://github.com/yourusername/fxsion-portfolio)
+Website: [https://fxsion.com](https://fxsion.com)
