@@ -21,8 +21,8 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Etoma-Etoto Kelvin Odi | Digital Solutions Expert",
-  description: "Professional portfolio of Etoma-Etoto Kelvin Odi, founder of Fxsion - specializing in workflow automation, document automation, and digital solutions.",
+  title: "Fxsion | Digital Solutions Agency",
+  description: "Fxsion specializes in workflow automation, web development, mobile apps, and document automation solutions that streamline business operations and boost productivity.",
   other: {
     'x-font-options': 'no-substitute'
   }
