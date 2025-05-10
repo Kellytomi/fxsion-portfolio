@@ -3,6 +3,10 @@ import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
 import ClientOnly from "@/components/ClientOnly";
+import dynamic from 'next/dynamic';
+
+// Dynamically import the LaunchWrapper with no SSR to ensure the date check happens client-side only
+const LaunchWrapper = dynamic(() => import('@/components/LaunchWrapper'), { ssr: false });
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -41,8 +45,10 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
       <body className="bg-surface text-text" style={{fontFamily: 'var(--font-jakarta), sans-serif'}}>
         <ClientOnly>
           <CustomCursor />
+          <LaunchWrapper>
+            {children}
+          </LaunchWrapper>
         </ClientOnly>
-        {children}
       </body>
     </html>
   );
