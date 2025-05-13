@@ -25,8 +25,16 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Fxsion | Digital Solutions Agency",
+  metadataBase: new URL('https://fxsion.dev'),
+  title: {
+    default: "Fxsion | Digital Solutions Agency",
+    template: "%s | Fxsion"
+  },
   description: "Fxsion specializes in workflow automation, web development, mobile apps, and document automation solutions that streamline business operations and boost productivity.",
+  icons: [
+    { rel: "icon", url: "/images/Fxsion.png" },
+    { rel: "apple-touch-icon", url: "/images/Fxsion.png" }
+  ],
   other: {
     'x-font-options': 'no-substitute'
   }
@@ -41,6 +49,8 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
     <html lang="en" className={`${jakarta.variable} ${syne.variable}`} style={{fontFamily: 'var(--font-jakarta), sans-serif'}}>
       <head>
         <meta name="x-font-options" content="no-substitute" />
+        <link rel="icon" href="/images/Fxsion.png" />
+        <link rel="apple-touch-icon" href="/images/Fxsion.png" />
       </head>
       <body className="bg-surface text-text" style={{fontFamily: 'var(--font-jakarta), sans-serif'}}>
         <ClientOnly>

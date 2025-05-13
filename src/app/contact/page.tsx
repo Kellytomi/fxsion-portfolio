@@ -1,13 +1,15 @@
 "use client";
 
 import Navigation from '@/components/Navigation';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { FaTelegramPlane, FaTwitter } from 'react-icons/fa';
 import { FaXTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa6';
+import emailjs from '@emailjs/browser';
 
 export default function Contact(): JSX.Element {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -18,6 +20,7 @@ export default function Contact(): JSX.Element {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormState({
@@ -29,13 +32,50 @@ export default function Contact(): JSX.Element {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
     
-    // Here would normally be code to submit to a backend
-    // For now, just simulate submission
-    setTimeout(() => {
+    try {
+      // Add current date and time to the form data
+      const currentDate = new Date();
+      const formattedDate = currentDate.toLocaleString();
+      
+      // Create a hidden input for the time if it doesn't exist
+      if (!formRef.current!.querySelector('input[name="time"]')) {
+        const timeInput = document.createElement('input');
+        timeInput.type = 'hidden';
+        timeInput.name = 'time';
+        timeInput.value = formattedDate;
+        formRef.current!.appendChild(timeInput);
+      } else {
+        // Update the existing time input
+        (formRef.current!.querySelector('input[name="time"]') as HTMLInputElement).value = formattedDate;
+      }
+      
+      const result = await emailjs.sendForm(
+        'service_lp4c5yh', // Your GoDaddy email service
+        'template_ffzjs6l', // Your EmailJS Template ID
+        formRef.current!,
+        'fiyiuW75yVwkScIsH' // Your EmailJS Public Key
+      );
+      
+      if (result.status === 200) {
+        setIsSubmitted(true);
+        setFormState({
+          name: '',
+          email: '',
+          company: '',
+          message: '',
+          service: 'workflow-automation'
+        });
+      } else {
+        setSubmitError('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitError('Failed to send your message. Please try again or email us directly at hello@fxsion.dev');
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1500);
+    }
   };
 
   // Pre-create icon elements to avoid JSX component issues
@@ -73,8 +113,14 @@ export default function Contact(): JSX.Element {
               className="bg-white p-8 rounded-xl shadow-soft"
             >
               {!isSubmitted ? (
-                <form onSubmit={handleSubmit}>
+                <form ref={formRef} onSubmit={handleSubmit}>
                   <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
+                  
+                  {submitError && (
+                    <div className="mb-6 p-4 bg-red-50 text-red-600 rounded-lg">
+                      {submitError}
+                    </div>
+                  )}
                   
                   <div className="space-y-4 mb-6">
                     <div>
@@ -220,7 +266,7 @@ export default function Contact(): JSX.Element {
                   Prefer to discuss your project in real-time? Schedule a complimentary 30-minute discovery call to explore how we can help transform your business.
                 </p>
                 <a 
-                  href="https://calendly.com/fxsion/30min" 
+                  href="https://calendly.com/hello-fxsion" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn bg-white text-primary hover:bg-white/90 w-full justify-center"
@@ -241,8 +287,8 @@ export default function Contact(): JSX.Element {
                     </div>
                     <div>
                       <h3 className="font-medium mb-1">Email</h3>
-                      <a href="mailto:hello@fxsion.com" className="text-primary hover:underline">
-                        hello@fxsion.com
+                      <a href="mailto:hello@fxsion.dev" className="text-primary hover:underline">
+                        hello@fxsion.dev
                       </a>
                     </div>
                   </div>

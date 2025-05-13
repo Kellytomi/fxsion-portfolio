@@ -106,6 +106,6 @@ The site can be deployed using:
 
 ## Contact
 
-Fxsion Digital Solutions - [hello@fxsion.com](mailto:hello@fxsion.com)
+Fxsion Digital Solutions - [hello@fxsion.dev](mailto:hello@fxsion.dev)
 
 Website: [https://fxsion.com](https://fxsion.com)

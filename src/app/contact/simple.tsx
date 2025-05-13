@@ -52,7 +52,7 @@ export default function SimpleContact() {
             <div className="space-y-4">
               <div>
                 <h4 className="font-bold">Email</h4>
-                <p className="text-gray-600">hello@fxsion.com</p>
+                <p className="text-gray-600">hello@fxsion.dev</p>
               </div>
               <div>
                 <h4 className="font-bold">Location</h4>

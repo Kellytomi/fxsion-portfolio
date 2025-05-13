@@ -160,7 +160,7 @@ export default function ComingSoon() {
           transition={{ duration: 0.8, delay: 1 }}
           className="text-muted"
         >
-          <p>For inquiries: <a href="mailto:hello@fxsion.com" className="text-primary hover:underline">hello@fxsion.com</a></p>
+          <p>For inquiries: <a href="mailto:hello@fxsion.dev" className="text-primary hover:underline">hello@fxsion.dev</a></p>
         </motion.div>
       </div>
     </div>
