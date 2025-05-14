@@ -138,8 +138,10 @@ export default function ComingSoon() {
           className="mb-10"
         >
           <Link 
-            href="/contact" 
+            href="https://calendly.com/hello-fxsion" 
             className="btn btn-primary text-white inline-flex items-center"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Book a Discovery Call
             <svg 
