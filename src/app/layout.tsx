@@ -1,27 +1,44 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Syne } from "next/font/google";
+import { Outfit, Manrope, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import CustomCursor from "@/components/CustomCursor";
 import ClientOnly from "@/components/ClientOnly";
 import dynamic from 'next/dynamic';
 
 // Dynamically import the LaunchWrapper with no SSR to ensure the date check happens client-side only
 const LaunchWrapper = dynamic(() => import('@/components/LaunchWrapper'), { ssr: false });
 
-const jakarta = Plus_Jakarta_Sans({
+const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-jakarta",
+  variable: "--font-outfit",
   preload: true,
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const syne = Syne({
+const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-syne",
+  variable: "--font-manrope",
   preload: true,
   weight: ["400", "500", "600", "700", "800"],
+});
+
+// Add Inter with black weight
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  preload: true,
+  weight: ["400", "500", "600", "700", "900"], // Including Black (900) weight
+});
+
+// Add JetBrains Mono for navigation
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+  preload: true,
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -46,15 +63,18 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
   return (
-    <html lang="en" className={`${jakarta.variable} ${syne.variable}`} style={{fontFamily: 'var(--font-jakarta), sans-serif'}}>
+    <html 
+      lang="en" 
+      className={`${outfit.variable} ${manrope.variable} ${inter.variable} ${jetBrainsMono.variable}`} 
+      style={{fontFamily: 'var(--font-outfit), sans-serif'}}
+    >
       <head>
         <meta name="x-font-options" content="no-substitute" />
         <link rel="icon" href="/images/Fxsion.png" />
         <link rel="apple-touch-icon" href="/images/Fxsion.png" />
       </head>
-      <body className="bg-surface text-text" style={{fontFamily: 'var(--font-jakarta), sans-serif'}}>
+      <body className="bg-surface text-text" style={{fontFamily: 'var(--font-outfit), sans-serif'}}>
         <ClientOnly>
-          <CustomCursor />
           <LaunchWrapper>
             {children}
           </LaunchWrapper>
