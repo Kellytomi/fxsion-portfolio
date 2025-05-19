@@ -1,0 +1,210 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,left=0.8in,right=0.8in,top=0.8in,bottom=0.8in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage{roboto}
+\usepackage[T1]{fontenc}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+% Define colors
+\definecolor{sidecolor}{HTML}{2A3B4C}
+\definecolor{mainblue}{HTML}{1976D2}
+\definecolor{lightblue}{HTML}{64B5F6}
+\definecolor{headergray}{HTML}{37474F}
+\definecolor{textgray}{HTML}{424242}
+\definecolor{accent}{HTML}{26A69A}
+
+% Hyperlinks setup
+\hypersetup{
+    colorlinks=true,
+    urlcolor=mainblue,
+    linkcolor=mainblue
+}
+
+% Remove page numbers
+\pagestyle{empty}
+
+% Custom sidebar section
+\newcommand{\sidebarsection}[1]{
+    \vspace{0.3cm}
+    \textbf{\textcolor{white}{\large #1}}
+    \vspace{0.1cm}
+    
+    \textcolor{lightblue}{\rule{\linewidth}{1pt}}
+    \vspace{0.2cm}
+}
+
+% Custom main section
+\newcommand{\mainsection}[1]{
+    \vspace{0.3cm}
+    \textbf{\textcolor{headergray}{\Large #1}}
+    \vspace{0.1cm}
+    
+    \textcolor{mainblue}{\rule{\linewidth}{1pt}}
+    \vspace{0.25cm}
+}
+
+% Custom command for job entry
+\newcommand{\jobentry}[4]{
+    \textbf{\textcolor{mainblue}{#1}} \hfill \textbf{#2}\\
+    \textit{#3} \hfill \textit{#4}\\
+    \vspace{0.1cm}
+}
+
+% Skill bar command
+\newcommand{\skillbar}[2]{
+    \textbf{#1} \hfill
+    \begin{tikzpicture}[baseline]
+        \fill[gray!30] (0,0) rectangle (5,0.15);
+        \fill[accent] (0,0) rectangle (#2,0.15);
+    \end{tikzpicture}\\
+    \vspace{0.1cm}
+}
+
+\begin{document}
+
+% Two-column layout with sidebar
+\noindent
+\begin{tikzpicture}[remember picture, overlay]
+    \fill[sidecolor] (current page.north west) rectangle ([xshift=2.7in] current page.south west);
+\end{tikzpicture}
+
+\begin{minipage}[t]{0.3\textwidth}
+    \begin{center}
+        \vspace{0.4cm}
+        \textcolor{white}{\Huge\textbf{Kelvin}}\\
+        \textcolor{white}{\Huge\textbf{Odi}}\\
+        \vspace{0.3cm}
+        \textcolor{lightblue}{\rule{0.8\linewidth}{1pt}}\\
+        \vspace{0.3cm}
+        \textcolor{white}{\large Digital Process Engineer}\\
+        \textcolor{white}{\& Software Developer}
+    \end{center}
+    
+    \vspace{0.8cm}
+    \sidebarsection{CONTACT}
+    \begin{flushleft}
+        \textcolor{white}{
+        \faEnvelope\ \ kelvinetoma95@gmail.com}\\
+        \vspace{0.1cm}
+        \textcolor{white}{
+        \faPhone\ \ +234 913 712 4272}\\
+        \vspace{0.1cm}
+        \textcolor{white}{
+        \faGithub\ \ github.com/kellytomi}\\
+        \vspace{0.1cm}
+        \textcolor{white}{
+        \faMapMarkerAlt\ \ Remote (WAT timezone)}
+    \end{flushleft}
+    
+    \sidebarsection{TECHNICAL SKILLS}
+    \textcolor{white}{
+        \skillbar{Next.js/React}{4.5}
+        \skillbar{Flutter/Dart}{4.2}
+        \skillbar{CRM Integration}{4.8}
+        \skillbar{Process Automation}{4.7}
+        \skillbar{Make/Zapier}{4.9}
+        \skillbar{Document Systems}{4.5}
+        \skillbar{Node.js}{3.8}
+        \skillbar{Firebase/Supabase}{4.0}
+    }
+    
+    \sidebarsection{TOOLS \& PLATFORMS}
+    \begin{flushleft}
+        \textcolor{white}{
+            \textbullet\ PandaDoc, Typeform\\
+            \textbullet\ Monday.com, HubSpot\\
+            \textbullet\ Zoho, Copper CRM\\
+            \textbullet\ Airtable, Google Sheets\\
+            \textbullet\ Make, Zapier\\
+            \textbullet\ Canva, Dropbox\\
+            \textbullet\ Notion, Trello
+        }
+    \end{flushleft}
+    
+    \sidebarsection{EDUCATION}
+    \textcolor{white}{
+        \textbf{Lead City University}\\
+        \small Ibadan, Nigeria\\
+        BSc Software Engineering\\
+        2024 - 2028 (In Progress)
+    }
+    
+    \vspace{0.3cm}
+    \textcolor{white}{
+        \textbf{Certifications}\\
+        \small Flutter Development Bootcamp\\
+        \small Zapier Certified Expert\\
+        \small Make (Integromat) Advanced User\\
+        \small PandaDoc Implementation Specialist
+    }
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.65\textwidth}
+    \vspace{0.4cm}
+    \mainsection{PROFESSIONAL SUMMARY}
+    
+    \textcolor{textgray}{Results-driven Digital Process Engineer and Software Developer with proven experience in automating business operations, building web/mobile apps, and streamlining workflows. Adept at solving technical challenges across CRMs, document platforms, and third-party integrations. Skilled in Flutter, Next.js, and automation stacks like Make, Zapier, and PandaDoc. Known for delivering client-centric solutions that boost efficiency, reduce manual effort, and create seamless user experiences.}
+    
+    \mainsection{PROFESSIONAL EXPERIENCE}
+    
+    \jobentry{Fxsion Studios}{Remote}
+    {Founder / CRM \& Automation Specialist / Flutter Developer}{Feb 2023 -- Present}
+    
+    \begin{itemize}[leftmargin=1.5em, itemsep=2pt, label=\textcolor{mainblue}{\footnotesize\faAngleRight}]
+        \item Developed web and mobile applications for clients using Flutter and Next.js, focusing on performance and responsiveness.
+        \item Provided ongoing technical support and website maintenance for WordPress clients, including plugin audits and bug fixes.
+        \item Designed and troubleshooted CRM workflows using HubSpot, Monday.com, Zoho, and Copper.
+        \item Built document automation flows using PandaDoc integrated with CRMs, Typeform, and Google Sheets.
+        \item Created reusable documentation, training resources, and handover guides.
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    \jobentry{Upwork Clients (Various Industries)}{Remote}
+    {Technical Support \& Workflow Consultant}{Jul 2022 -- Present}
+    
+    \begin{itemize}[leftmargin=1.5em, itemsep=2pt, label=\textcolor{mainblue}{\footnotesize\faAngleRight}]
+        \item Converted sales documents into branded, dynamic templates using PandaDoc.
+        \item Migrated CRM systems (e.g., Zoho, HubSpot) with full data and process alignment.
+        \item Built Make/Zapier automations involving Dropbox, Google Sheets, and Canva for asset management and reporting.
+        \item Created training videos, Loom walkthroughs, and tracked feedback using ClickUp/Monday.
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    \jobentry{Yacht Zero Inc.}{Remote}
+    {Digital Process Engineer \& Automation Expert}{Apr 2024 -- Apr 2025}
+    
+    \begin{itemize}[leftmargin=1.5em, itemsep=2pt, label=\textcolor{mainblue}{\footnotesize\faAngleRight}]
+        \item Led automation flows for brokers using Trello, PandaDoc, and Airtable triggers.
+        \item Developed Airtable--Dropbox--Canva automations for marketing asset curation and yacht video breakdowns.
+        \item Built API-integrated listing pages for the company website using YATCO.
+        \item Generated structured documents, folders, and reports using Monday.com data.
+        \item Supported CRM setup, database syncing, and automated client communication tools.
+    \end{itemize}
+    
+    \mainsection{PROJECTS \& ACHIEVEMENTS}
+    
+    \begin{itemize}[leftmargin=1.5em, itemsep=5pt, label=\textcolor{mainblue}{\footnotesize\faCircle}]
+        \item \textbf{Multi-Platform CRM Integration} — Developed a custom solution connecting HubSpot, PandaDoc, and Airtable for a fintech startup, reducing manual data entry by 85\%.
+        
+        \item \textbf{Automation Workflow Redesign} — Rebuilt a marketing agency's client onboarding process using Make and Zapier, cutting onboarding time from 2 weeks to 3 days.
+        
+        \item \textbf{Mobile App Development} — Created a Flutter-based inventory management application for iOS and Android with offline capabilities and cloud synchronization.
+        
+        \item \textbf{Document Generation System} — Implemented an automated document creation system for a legal services firm, generating compliant contracts from client data.
+    \end{itemize}
+    
+    \mainsection{PROFESSIONAL DEVELOPMENT}
+    
+    \begin{itemize}[leftmargin=1.5em, itemsep=3pt, label=\textcolor{mainblue}{\footnotesize\faGraduationCap}]
+        \item Contribute to automation community forums and knowledge bases
+        \item Attend webinars on CRM integration and document automation best practices
+        \item Participate in Flutter developer communities and contribute to open-source projects
+        \item Stay current with API changes and integration opportunities across platforms
+    \end{itemize}
+\end{minipage}
+
+\end{document} 

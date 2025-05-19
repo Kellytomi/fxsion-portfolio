@@ -15,7 +15,7 @@ export default function LaunchWrapper({ children }: LaunchWrapperProps) {
     // ------ COUNTDOWN CONTROL CENTER ------
     
     // 1. MASTER SWITCH: Set to 'true' to enable countdown, 'false' to disable it completely
-    const enableCountdown = true;
+    const enableCountdown = false;
     
     // 2. AUTOMATIC DATE CHECK: Set your launch date (15 days from now by default)
     const calculateLaunchDate = () => {

@@ -23,7 +23,7 @@ export default function Home(): JSX.Element {
       <PageSpacer />
       
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center pt-24 sm:pt-28 md:pt-20 lg:pt-0">
+      <section className="relative min-h-[85vh] flex items-center pt-20 sm:pt-24 md:pt-16 lg:pt-0">
         <motion.div 
           className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"
           style={{ y }}
@@ -31,7 +31,7 @@ export default function Home(): JSX.Element {
         <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface to-white/50" />
         
         <div className="container relative">
-          <div className="flex flex-col lg:flex-row items-center gap-12 py-20">
+          <div className="flex flex-col lg:flex-row items-center gap-10 py-16">
             {/* Content */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -104,42 +104,10 @@ export default function Home(): JSX.Element {
                 </Link>
                 <Link 
                   href="/projects"
-                  className="group btn btn-secondary w-[80%] max-w-[280px] sm:w-auto text-center justify-center hover:bg-secondary/90 hover:text-white"
+                  className="group btn w-[80%] max-w-[280px] sm:w-auto text-center justify-center bg-gray-400 hover:bg-gray-500 text-white"
                 >
                   See Our Work
                 </Link>
-              </motion.div>
-
-              {/* Stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-                className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto lg:mx-0 mb-10 sm:mb-16 md:mb-12"
-              >
-                {[
-                  { number: 150, suffix: '+', label: 'Projects' },
-                  { number: 50, suffix: '+', label: 'Clients' },
-                  { number: 99, suffix: '%', label: 'Success' },
-                  { number: 24, suffix: '/7', label: 'Support' },
-                ].map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-                    className="text-center"
-                  >
-                    <div className="font-display text-2xl sm:text-3xl font-bold gradient-text mb-1">
-                      <CountUp 
-                        end={stat.number} 
-                        suffix={stat.suffix}
-                        duration={2.5}
-                      />
-                    </div>
-                    <div className="text-sm text-muted">{stat.label}</div>
-                  </motion.div>
-                ))}
               </motion.div>
             </motion.div>
 
@@ -259,7 +227,7 @@ export default function Home(): JSX.Element {
       </section>
 
       {/* Services Section */}
-      <section className="py-32 bg-white relative">
+      <section className="py-24 bg-white relative">
         <div className="absolute inset-0 bg-gradient-to-b from-surface to-white" />
         <div className="container relative">
           <motion.div
@@ -267,7 +235,7 @@ export default function Home(): JSX.Element {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <h2 className="section-title mb-4">Our Services</h2>
             <p className="section-subtitle max-w-2xl mx-auto">
@@ -323,14 +291,14 @@ export default function Home(): JSX.Element {
       </section>
 
       {/* Featured Projects Section */}
-      <section className="py-32 bg-surface relative">
+      <section className="py-24 bg-surface relative">
         <div className="container relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <h2 className="section-title mb-4">Featured Projects</h2>
             <p className="section-subtitle max-w-2xl mx-auto">
@@ -414,14 +382,14 @@ export default function Home(): JSX.Element {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-32 bg-white relative">
+      <section className="py-24 bg-white relative">
         <div className="container relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <h2 className="section-title mb-4">Client Testimonials</h2>
             <p className="section-subtitle max-w-2xl mx-auto">
@@ -478,11 +446,13 @@ export default function Home(): JSX.Element {
               </motion.div>
             ))}
           </div>
+
+
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-primary relative overflow-hidden">
+      <section className="py-24 bg-primary relative overflow-hidden">
         <motion.div 
           className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"
           animate={{ 

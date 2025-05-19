@@ -330,45 +330,111 @@ export default function Testimonials(): JSX.Element {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
+      <section className="py-20 bg-black text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         
         <div className="container relative">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Client Satisfaction by the Numbers
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-display">
+              Make informed decisions with Insights
             </h2>
-            <p className="text-white/80 max-w-2xl mx-auto">
-              Measurable results that demonstrate our commitment to delivering exceptional solutions
+            <p className="text-white/70 max-w-2xl mx-auto">
+              Our Insights dashboard surfaces all activity across our projects
+              and shows you trends that enable better team scheduling and decision making.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: 50, suffix: '+', label: 'Projects Completed', icon: '📊' },
-              { number: 95, suffix: '%', label: 'Client Satisfaction', icon: '⭐' },
-              { number: 40, suffix: '%', label: 'Average Efficiency Gain', icon: '⚡' },
-              { number: 100, suffix: '%', label: 'On-time Delivery', icon: '🚀' },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center"
-              >
-                <div className="text-2xl mb-3">{stat.icon}</div>
-                <div className="text-3xl md:text-4xl font-bold mb-2">
-                  <CountUp 
-                    end={stat.number} 
-                    suffix={stat.suffix} 
-                    duration={2}
-                  />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <motion.div 
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/5 hover:border-white/20 transition-all duration-300 cursor-pointer"
+            >
+              <div className="flex justify-between items-start mb-3">
+                <h4 className="text-sm uppercase tracking-wider text-white/60">Bookings</h4>
+                <svg className="w-5 h-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="flex items-baseline">
+                <span className="font-display text-4xl font-bold">32%</span>
+                <span className="ml-2 text-blue-400 text-sm flex items-center">
+                  <svg className="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg>
+                  4.3%
+                </span>
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <p className="text-xs text-white/50">Increased bookings from previous quarter</p>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/5 hover:border-white/20 transition-all duration-300 cursor-pointer"
+            >
+              <div className="flex justify-between items-start mb-3">
+                <h4 className="text-sm uppercase tracking-wider text-white/60">Projects Completed</h4>
+                <svg className="w-5 h-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
+                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
+                </svg>
+              </div>
+              <div className="flex items-baseline">
+                <span className="font-display text-4xl font-bold">150</span>
+                <span className="ml-2 text-green-400 text-sm">Total</span>
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <p className="text-xs text-white/50">Successfully delivered across 6 industries</p>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/5 hover:border-white/20 transition-all duration-300 cursor-pointer"
+            >
+              <div className="flex justify-between items-start mb-3">
+                <h4 className="text-sm uppercase tracking-wider text-white/60">Canceled</h4>
+                <svg className="w-5 h-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="flex items-baseline">
+                <span className="font-display text-4xl font-bold">2%</span>
+                <span className="ml-2 text-gray-400 text-sm flex items-center">
+                  <svg className="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                  0.5%
+                </span>
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <p className="text-xs text-white/50">Industry-low cancellation rate</p>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/5 hover:border-white/20 transition-all duration-300 cursor-pointer"
+            >
+              <div className="flex justify-between items-start mb-3">
+                <h4 className="text-sm uppercase tracking-wider text-white/60">Most Booked</h4>
+                <div className="w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                  <span className="text-yellow-400 font-bold">A</span>
                 </div>
-                <div className="text-sm text-white/80">{stat.label}</div>
-              </motion.div>
-            ))}
+              </div>
+              <div className="flex items-baseline">
+                <span className="font-display text-4xl font-bold">321</span>
+                <span className="ml-2 text-yellow-400 text-sm">Projects</span>
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <p className="text-xs text-white/50">Automation is our most requested service</p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

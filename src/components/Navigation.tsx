@@ -1,11 +1,28 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Inter, JetBrains_Mono } from 'next/font/google';
+
+// Load Inter font with the black weight
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700", "900"], // Added 900 (Black) weight
+});
+
+// Load JetBrains Mono font for navbar
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+  weight: ["300", "400", "500"], // Added light (300) weight
+});
 
 interface NavItem {
   name: string;
@@ -14,71 +31,109 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { name: 'Home', href: '/' },
-  { name: 'About Us', href: '/about' },
+  { name: 'About', href: '/about' },
   { name: 'Services', href: '/services' },
-  { name: 'Portfolio', href: '/projects' },
+  { name: 'Work', href: '/projects' },
   { name: 'Testimonials', href: '/testimonials' },
-  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Navigation(): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Only prevent default for same-page navigation
+    if (pathname === href) {
+      e.preventDefault();
+      
+      // Smooth scroll to top for same page links
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+    
+    // Close mobile menu if it's open
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <nav className="fixed w-full z-50">
-      <div className="glass-effect">
-        <div className="container mx-auto">
-          <div className="flex items-center justify-between h-20">
-            <Link href="/" className="flex items-center h-full">
+    <nav className={`fixed w-full z-50 transition-all duration-300 flex justify-center ${scrolled ? 'py-4' : 'py-5'}`}>
+      <div className={`rounded-full transition-all duration-300 ${scrolled ? 'bg-white' : 'bg-white'} border border-gray-200/70 w-[95%] md:w-auto md:inline-flex`}>
+        <div className="flex items-center justify-between h-16 w-full px-4 md:px-8">
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center">
               <Image 
                 src="/images/Fxsion.png" 
                 alt="Fxsion Logo" 
-                width={150} 
-                height={40} 
-                className="object-contain mt-1"
+                width={85} 
+                height={24} 
+                className="object-contain"
                 priority
               />
             </Link>
+          </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center">
+            <div className="flex items-center space-x-10 mx-8">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`relative group ${
-                    pathname === item.href ? 'text-primary font-medium' : 'text-muted'
+                  className={`relative text-[12px] uppercase tracking-[0.15em] font-light transition-colors duration-300 ${jetBrainsMono.className} ${
+                    pathname === item.href ? 'text-black' : 'text-gray-600 hover:text-black'
                   }`}
+                  onClick={(e) => handleNavigation(e, item.href)}
                 >
-                  <span className="relative">
+                  <span className="relative py-1">
                     {item.name}
                     {pathname === item.href && (
                       <motion.span
                         layoutId="underline"
-                        className="absolute left-0 top-full block h-0.5 w-full bg-black"
+                        className="absolute left-0 top-full -mt-0.5 block h-0.5 w-full bg-black"
                       />
                     )}
                   </span>
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300" />
                 </Link>
               ))}
             </div>
+            
+            <Link 
+              href="/contact" 
+              className={`bg-black hover:bg-black/90 text-white text-[12px] uppercase tracking-[0.15em] font-light py-[8px] px-7 rounded-full transition-all duration-300 flex items-center ${jetBrainsMono.className}`}
+              onClick={(e) => handleNavigation(e, '/contact')}
+            >
+              <span>Work with us</span>
+              <span className="ml-2">→</span>
+            </Link>
+          </div>
 
-            {/* Mobile Navigation Button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2"
-                aria-label={isOpen ? 'Close menu' : 'Open menu'}
-              >
-                {isOpen ? (
-                  <XMarkIcon className="w-6 h-6" />
-                ) : (
-                  <Bars3Icon className="w-6 h-6" />
-                )}
-              </button>
-            </div>
+          {/* Mobile Navigation Button */}
+          <div className="md:hidden ml-auto">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-1"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            >
+              {isOpen ? (
+                <XMarkIcon className="w-5 h-5" />
+              ) : (
+                <Bars3Icon className="w-5 h-5" />
+              )}
+            </button>
           </div>
         </div>
       </div>
@@ -90,20 +145,20 @@ export default function Navigation(): JSX.Element {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-gray-100 shadow-lg overflow-hidden"
+            className="absolute top-full left-4 right-4 md:hidden bg-white border border-gray-200/70 shadow-lg overflow-hidden mt-2 rounded-xl"
           >
-            <div className="container mx-auto py-4">
-              <div className="flex flex-col space-y-4">
+            <div className="py-6 px-4">
+              <div className={`flex flex-col space-y-5 ${jetBrainsMono.className}`}>
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`px-4 py-2 rounded-md ${
+                    className={`px-4 py-2.5 rounded-lg transition-colors duration-200 uppercase tracking-[0.15em] text-xs font-light ${
                       pathname === item.href
-                        ? 'bg-primary/10 text-primary font-medium'
-                        : 'text-muted hover:bg-gray-50'
+                        ? 'bg-black/5 text-black'
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-black'
                     }`}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => handleNavigation(e, item.href)}
                   >
                     {item.name}
                   </Link>
@@ -111,10 +166,11 @@ export default function Navigation(): JSX.Element {
                 
                 <Link 
                   href="/contact" 
-                  className="btn btn-primary text-white text-center mx-4 mt-2"
-                  onClick={() => setIsOpen(false)}
+                  className="bg-black text-white text-center mx-4 mt-2 py-3 px-6 rounded-full uppercase tracking-[0.15em] text-xs font-light flex items-center justify-center"
+                  onClick={(e) => handleNavigation(e, '/contact')}
                 >
-                  Book a Discovery Call
+                  <span>Work with us</span>
+                  <span className="ml-2">→</span>
                 </Link>
               </div>
             </div>
